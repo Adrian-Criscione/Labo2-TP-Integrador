@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1718078360 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\main.cpp
+	<iostream>
+	"Empresa.h"
+	"Fecha.h"
+
+1715572875 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1715572875 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
+	<string>
+
+1718077953 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
+	<iostream>
+	<cstdlib>
+	<cstring>
+	"Empresa.h"
+
+1718078120 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
+	"Fecha.h"
+
