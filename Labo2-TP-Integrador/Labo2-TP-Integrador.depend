@@ -3,14 +3,15 @@
 	<iostream>
 	"AppManager.h"
 
-1718163615 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
+1718231235 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
 	<iostream>
+	<ctime>
 	"Fecha.h"
 
 1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
 	<string>
 
-1718167233 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
+1718231267 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
@@ -19,7 +20,7 @@
 1718167184 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
 
-1718165864 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
+1718168055 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
 	<iostream>
 	"AppManager.h"
 	"EmpresaManager.h"
@@ -35,11 +36,11 @@
 1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresaarchivo.h
 	"Empresa.h"
 
-1718167809 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
+1718232613 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
 	"Empresa.h"
 	"EmpresaArchivo.h"
 
-1718167972 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
+1718233837 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
 	<iostream>
 	<cstdlib>
 	"EmpresaManager.h"

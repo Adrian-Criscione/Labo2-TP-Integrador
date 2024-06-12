@@ -14,7 +14,7 @@ Empresa::Empresa():_fechaAlta(1,1,1)
 
 }
 
-Empresa::Empresa(int idEmpresa, std::string razonSocial, std::string cuit, Fecha fechaAlta, bool estado): _fechaAlta(1,1,1)
+Empresa::Empresa(int idEmpresa, std::string razonSocial, std::string cuit, Fecha fechaAlta, bool estado)//: _fechaAlta
 {
     setIdEmpresa(idEmpresa);
     setRazonSocial(razonSocial);

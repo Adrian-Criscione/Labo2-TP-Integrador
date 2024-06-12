@@ -8,14 +8,18 @@ class EmpresaManager
     public:
 
         void menuEmpresa();
+        void menuModificarEmpresa();
 
     private:
 
         void agregarEmpresa();
         void listarEmpresas();
+        void listarEmpresas(Empresa registro);
         Empresa crearEmpresa();
+
         void mostrarEmpresa(Empresa registro);
-        void modificarEmpresa();
+        void modificarNombreEmpresa();
+        void modificarCuitEmpresa();
         void bajaEmpresa();
         void ordenarEmpresaPorNombre(Empresa *empresas, int cantidad);
 

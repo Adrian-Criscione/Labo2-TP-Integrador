@@ -1,15 +1,18 @@
 #include <iostream>
+#include <ctime>
 #include "Fecha.h"
 
 using namespace std;
 
 Fecha::Fecha()
 {
-    _dia = 0;
-    _mes = 0;
-    _anio = 0;
-
-    cout << "Estoy construyendo un objeto fecha." << endl;
+    time_t t;
+    struct tm *f;
+    time(&t);
+    f = localtime(&t);
+    _dia = f->tm_mday;
+    _mes = f->tm_mon+1;
+    _anio = f->tm_year+1900;
 }
 
 Fecha::Fecha(int dia, int mes, int anio)

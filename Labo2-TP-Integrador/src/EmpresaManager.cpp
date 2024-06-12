@@ -32,11 +32,10 @@ void EmpresaManager::menuEmpresa()
             break;
         case 2:
             listarEmpresas();
-
             system("pause");
             break;
         case 3:
-            modificarEmpresa();
+            menuModificarEmpresa();
             system("pause");
             break;
         case 4:
@@ -44,7 +43,9 @@ void EmpresaManager::menuEmpresa()
             system("pause");
             break;
         case 5:
-            listarEmpresas();
+            //listarEmpresas();
+
+            cout << "Falta desarrollar." <<endl;
             system("pause");
             break;
         }
@@ -52,6 +53,108 @@ void EmpresaManager::menuEmpresa()
     while(opcion!=0);
 
 }
+
+void EmpresaManager::menuModificarEmpresa()
+{
+    int opcion;
+    do
+    {
+        system("cls");
+
+        cout << "--------------------------------------" << endl;
+        cout << "------ MENU MODIFICAR EMPRESA -------- " << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "1- MODIFICAR NOMBRE" << endl;
+        cout << "2- MODIFICAR CUIT" << endl;
+        cout << "--------------------------------------" << endl;
+        cout << "0- SALIR" << endl;
+        cout << "Opcion: "<< endl;
+        cin >> opcion;
+
+        switch(opcion)
+        {
+        case 1:
+            modificarNombreEmpresa();
+            system("pause");
+            break;
+        case 2:
+            modificarCuitEmpresa();
+            system("pause");
+            break;
+        }
+    }
+    while(opcion!=0);
+}
+void EmpresaManager::listarEmpresas(Empresa registro)
+{
+    cout << "ID EMPRESA    : " << registro.getIdEmpresa() << endl;
+    cout << "RAZON SOCIAL  : " << registro.getRazonSocial() << endl;
+    cout << "CUIT          : " << registro.getCuit() << endl;
+    cout << "FECHA DE ALTA : " << registro.getFechaAlta().toString() << endl;
+    cout << "ESTADO        : " << registro.getEstado() << endl;
+}
+
+void EmpresaManager::modificarNombreEmpresa()
+{
+    system("cls");
+    Empresa registro;
+    int idEmpresa, posicion;
+    cout << "Ingrese un ID de Empresa a buscar: ";
+    cin >> idEmpresa;
+    cin.ignore();
+    posicion = _empresaArchivo.buscarID(idEmpresa);
+
+    if(posicion >= 0)
+    {
+        registro = _empresaArchivo.leer(posicion);
+        listarEmpresas(registro);
+        cout << "----------------------------" << endl;
+
+        string nuevoNombre;
+        cout << "Ingrese la nueva razon social: ";
+        getline(cin,nuevoNombre);
+        registro.setRazonSocial(nuevoNombre);
+        _empresaArchivo.guardar(posicion,registro);
+        cout << "Razon social modificada con exito." << endl;
+    }
+    else
+    {
+        cout << "No existe una empresa con ID " << idEmpresa << endl;
+    }
+
+}
+
+void EmpresaManager::modificarCuitEmpresa()
+{
+        system("cls");
+    Empresa registro;
+    int idEmpresa, posicion;
+    cout << "Ingrese un ID de Empresa a buscar: ";
+    cin >> idEmpresa;
+    cin.ignore();
+    posicion = _empresaArchivo.buscarID(idEmpresa);
+
+    if(posicion >= 0)
+    {
+        registro = _empresaArchivo.leer(posicion);
+        listarEmpresas(registro);
+        cout << "----------------------------" << endl;
+
+        string nuevoCuit;
+        cout << "Ingrese el nuevo CUIT de la empresa: ";
+        getline(cin,nuevoCuit);
+        registro.setCuit(nuevoCuit);
+        _empresaArchivo.guardar(posicion,registro);
+        cout << "CUIT de empresa "<< registro.getRazonSocial() <<" modificada con exito." << endl;
+    }
+    else
+    {
+        cout << "No existe una empresa con ID " << idEmpresa << endl;
+    }
+
+
+}
+
 
 void EmpresaManager::agregarEmpresa()
 {
@@ -73,6 +176,7 @@ void EmpresaManager::listarEmpresas()
 
     for(int i = 0; i < cantidad; i++)
     {
+
         cout << "--------------------------------" << endl;
         mostrarEmpresa(_empresaArchivo.leer(i));
         cout << "--------------------------------" << endl;
@@ -86,6 +190,7 @@ Empresa EmpresaManager::crearEmpresa()
     int idEmpresa;
     string razonSocial;
     string cuit;
+    Fecha fechaAlta;
 
 
     idEmpresa = _empresaArchivo.getNuevoID();
@@ -98,7 +203,7 @@ Empresa EmpresaManager::crearEmpresa()
     cout << "Ingrese el CUIT: ";
     getline(cin,cuit);
 
-    return Empresa(idEmpresa,razonSocial,cuit,Fecha(12,6,2024),true);
+    return Empresa(idEmpresa,razonSocial,cuit,fechaAlta,true);
 
 
 
@@ -114,14 +219,31 @@ void EmpresaManager::mostrarEmpresa(Empresa registro)
 
 }
 
-void EmpresaManager::modificarEmpresa()
-{
-
-}
 
 void EmpresaManager::bajaEmpresa()
 {
+    Empresa registro;
+    bool estado;
+    int idEmpresa, posicion;
+    cout << "Ingrese el ID a buscar: ";
+    cin >> idEmpresa;
 
+    posicion = _empresaArchivo.buscarID(idEmpresa);
+    if(posicion >=0)
+    {
+        registro = _empresaArchivo.leer(posicion);
+        listarEmpresas(registro);
+        cout << "-------------------------" << endl;
+        cout << "Desea dar de baja la empresa? (0-Si/1-No) ";
+        cin >> estado;
+        registro.setEstado(estado);
+        _empresaArchivo.guardar(posicion,registro);
+        cout << "La Empresa " << registro.getRazonSocial() << " se ha dado de baja." << endl;
+    }
+    else
+    {
+        cout << "No existe una empresa con ID " << idEmpresa << endl;
+    }
 }
 
 void EmpresaManager::ordenarEmpresaPorNombre(Empresa* empresas, int cantidad)
