@@ -3,6 +3,7 @@ using namespace std;
 
 
 #include "AppManager.h"
+#include "EmpresaManager.h"
 
 void AppManager::menuPrincipal()
 {
@@ -28,8 +29,8 @@ void AppManager::menuPrincipal()
         {
         case 1:
             //_pm.menu(); BORRAR
-            cout << "INGRESO A LA OPCION DE EMPRESAS." << endl;
-            system("pause");
+            _em.menuEmpresa();
+
             break;
 
         case 2:

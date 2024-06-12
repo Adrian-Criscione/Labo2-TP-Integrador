@@ -7,21 +7,21 @@ class Empresa
 public:
     //CONSTRUCTOR
     Empresa();
-    Empresa(int idEmpresa, char razonSocial[30], char cuit[11], Fecha fechaAlta, Fecha fechaBaja);
+    Empresa(int idEmpresa, std::string razonSocial, std::string cuit, Fecha fechaAlta, bool estado);
 
     //GETTERS
     int getIdEmpresa();
     std::string getRazonSocial();
     std::string getCuit();
     Fecha getFechaAlta();
-    Fecha getFechaBaja();
+    bool getEstado();
 
     //SETTERS
     void setIdEmpresa(int idEmpresa);
     void setRazonSocial(std::string razonSocial);
     void setCuit(std::string cuit);
     void setFechaAlta(Fecha fechaAlta);
-    void setFechaBaja(Fecha fechaBaja);
+    void setEstado(bool estado);
 
 
 
@@ -30,7 +30,7 @@ private:
     char _razonSocial[30];
     char _cuit[11];
     Fecha _fechaAlta;
-    Fecha _fechaBaja;
+    bool _estado;
 
 
 

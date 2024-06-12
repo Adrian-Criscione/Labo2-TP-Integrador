@@ -2,24 +2,25 @@
 #include <cstdlib>
 #include <cstring>
 #include "Empresa.h"
-using namespace std;
+//using namespace std;
 
 
-Empresa::Empresa():_fechaAlta(1,1,1),_fechaBaja(1,1,1)
+Empresa::Empresa():_fechaAlta(1,1,1)
 {
     _idEmpresa = 0;
     strcpy(_razonSocial,"");
     strcpy(_cuit,"");
+    _estado = true;
 
 }
 
-Empresa::Empresa(int idEmpresa, char razonSocial[30], char cuit[11], Fecha fechaAlta, Fecha fechaBaja)
+Empresa::Empresa(int idEmpresa, std::string razonSocial, std::string cuit, Fecha fechaAlta, bool estado): _fechaAlta(1,1,1)
 {
     setIdEmpresa(idEmpresa);
     setRazonSocial(razonSocial);
     setCuit(cuit);
     setFechaAlta(fechaAlta);
-    setFechaBaja(fechaBaja);
+    estado = true;
 
 }
 
@@ -28,12 +29,12 @@ int Empresa::getIdEmpresa()
     return _idEmpresa;
 }
 
-string Empresa::getRazonSocial()
+std::string Empresa::getRazonSocial()
 {
     return _razonSocial;
 }
 
-string Empresa::getCuit()
+std::string Empresa::getCuit()
 {
     return _cuit;
 }
@@ -43,9 +44,9 @@ Fecha Empresa::getFechaAlta()
     return _fechaAlta;
 }
 
-Fecha Empresa::getFechaBaja()
+bool Empresa::getEstado()
 {
-    return _fechaBaja;
+    return _estado;
 }
 
 void Empresa::setIdEmpresa(int idEmpresa)
@@ -72,8 +73,8 @@ void Empresa::setFechaAlta(Fecha fechaAlta)
 
 }
 
-void Empresa::setFechaBaja(Fecha fechaBaja)
+void Empresa::setEstado(bool estado)
 {
-    _fechaBaja = fechaBaja;
+    _estado = estado;
 
 }
