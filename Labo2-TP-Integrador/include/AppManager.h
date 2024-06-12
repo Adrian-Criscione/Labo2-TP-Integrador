@@ -4,8 +4,8 @@
 
 class AppManager
 {
-    public:
-        void menuPrincipal();
+public:
+    void menuPrincipal();
 };
 
 #endif // APPMANAGER_H

@@ -1,22 +1,35 @@
 # depslib dependency file v1.0
-1718078360 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\main.cpp
+1718162758 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\main.cpp
 	<iostream>
-	"Empresa.h"
+	"AppManager.h"
+
+1718163615 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
+	<iostream>
 	"Fecha.h"
 
-1715572875 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
-	<iostream>
-	"Fecha.h"
-
-1715572875 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
+1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
 	<string>
 
-1718077953 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
+1718164205 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
 	"Empresa.h"
 
-1718078120 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
+1718163934 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
+
+1718163615 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
+	<iostream>
+	"AppManager.h"
+
+1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\appmanager.h
+
+1718164743 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresaarchivo.cpp
+	<iostream>
+	<cstdlib>
+	"EmpresaArchivo.h"
+
+1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresaarchivo.h
+	"Empresa.h"
 

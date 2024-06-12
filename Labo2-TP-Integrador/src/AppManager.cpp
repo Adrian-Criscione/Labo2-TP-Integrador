@@ -50,7 +50,7 @@ void AppManager::menuPrincipal()
             /// MENU CONFIGURACION
             system("pause");
             break;
-    }
+        }
 
     }
     while(option != 0);

@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
- 
-class Fecha{
-  private:
+
+class Fecha
+{
+private:
     int _dia, _mes, _anio;
- 
-  public:
+
+public:
     Fecha();
     Fecha(int dia, int mes, int anio);
     int getDia();

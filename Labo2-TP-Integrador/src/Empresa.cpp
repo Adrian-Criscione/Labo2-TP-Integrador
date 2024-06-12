@@ -1,10 +1,17 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-
+#include "Empresa.h"
 using namespace std;
 
-#include "Empresa.h"
+
+Empresa::Empresa():_fechaAlta(1,1,1),_fechaBaja(1,1,1)
+{
+    _idEmpresa = 0;
+    strcpy(_razonSocial,"");
+    strcpy(_cuit,"");
+
+}
 
 Empresa::Empresa(int idEmpresa, char razonSocial[30], char cuit[11], Fecha fechaAlta, Fecha fechaBaja)
 {
@@ -47,13 +54,13 @@ void Empresa::setIdEmpresa(int idEmpresa)
 
 }
 
-void Empresa::setRazonSocial(string razonSocial)
+void Empresa::setRazonSocial(std::string razonSocial)
 {
-   strcpy(_razonSocial,razonSocial.c_str());
+    strcpy(_razonSocial,razonSocial.c_str());
 
 }
 
-void Empresa::setCuit(string cuit)
+void Empresa::setCuit(std::string cuit)
 {
     strcpy(_cuit,cuit.c_str());
 
