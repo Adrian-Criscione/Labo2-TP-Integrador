@@ -62,3 +62,12 @@
 1718601443 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\personamanager.h
 	"Persona.h"
 
+1718652083 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleado.cpp
+	<iostream>
+	<cstdlib>
+	"Empleado.h"
+
+1718651158 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleado.h
+	"Persona.h"
+	"Fecha.h"
+
