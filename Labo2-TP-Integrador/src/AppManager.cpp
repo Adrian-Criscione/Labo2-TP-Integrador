@@ -22,7 +22,7 @@ void AppManager::menuPrincipal()
         cout << "5- CONFIGURACION" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
-        cout << "Opcion: "<< endl;
+        cout << "Opcion: ";
         cin >> option;
 
         switch(option)
