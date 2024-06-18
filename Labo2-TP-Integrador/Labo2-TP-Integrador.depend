@@ -84,3 +84,8 @@
 	"Empleado.h"
 	"EmpleadoArchivo.h"
 
+1718678852 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
+	<iostream>
+	<cstdlib>
+	"EmpleadosManager.h"
+
