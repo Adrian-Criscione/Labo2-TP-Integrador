@@ -25,8 +25,9 @@
 	"AppManager.h"
 	"EmpresaManager.h"
 
-1718165864 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\appmanager.h
+1718677853 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\appmanager.h
 	"EmpresaManager.h"
+	"EmpleadosManager.h"
 
 1718164743 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresaarchivo.cpp
 	<iostream>
@@ -70,4 +71,16 @@
 1718651158 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleado.h
 	"Persona.h"
 	"Fecha.h"
+
+1718652810 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadoarchivo.cpp
+	<iostream>
+	<cstdlib>
+	"EmpleadoArchivo.h"
+
+1718652210 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadoarchivo.h
+	"Empleado.h"
+
+1718675762 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
+	"Empleado.h"
+	"EmpleadoArchivo.h"
 
