@@ -17,7 +17,6 @@ Empleado::Empleado() : Persona()
     _fechaContratacion =Fecha();
     _fechaBaja = Fecha();
     _estado = true;
-
 }
 Empleado::Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento, int idLegajo, int idEmpresa, int idArea, int idRol, float horasTrabajadas, float sueldo, Fecha fechaContratacion, Fecha fechaBaja, bool estado) : Persona(nombre,apellido, DNI, fechaNacimiento)
 {

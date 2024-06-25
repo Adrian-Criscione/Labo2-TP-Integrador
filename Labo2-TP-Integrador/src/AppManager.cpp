@@ -4,6 +4,7 @@ using namespace std;
 
 #include "AppManager.h"
 #include "EmpresaManager.h"
+#include "EmpleadosManager.h"
 
 void AppManager::menuPrincipal()
 {
@@ -28,13 +29,12 @@ void AppManager::menuPrincipal()
         switch(option)
         {
         case 1:
-            //_pm.menu(); BORRAR
             _em.menuEmpresa();
 
             break;
 
         case 2:
-            //_catman.menu(); BORRAR
+            _empManager.menuEmpleado();
             ///MENU EMPLEADOS
             system("pause");
             break;

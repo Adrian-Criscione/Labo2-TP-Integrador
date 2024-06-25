@@ -20,10 +20,11 @@
 1718167184 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
 
-1718596316 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
+1719285589 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
 	<iostream>
 	"AppManager.h"
 	"EmpresaManager.h"
+	"EmpleadosManager.h"
 
 1718677853 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\appmanager.h
 	"EmpresaManager.h"
@@ -37,11 +38,11 @@
 1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresaarchivo.h
 	"Empresa.h"
 
-1718232613 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
+1719291770 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
 	"Empresa.h"
 	"EmpresaArchivo.h"
 
-1718234300 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
+1719291770 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
 	<iostream>
 	<cstdlib>
 	"EmpresaManager.h"
@@ -63,7 +64,7 @@
 1718601443 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\personamanager.h
 	"Persona.h"
 
-1718652083 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleado.cpp
+1719283013 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleado.cpp
 	<iostream>
 	<cstdlib>
 	"Empleado.h"
@@ -72,7 +73,7 @@
 	"Persona.h"
 	"Fecha.h"
 
-1718652810 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadoarchivo.cpp
+1719287339 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadoarchivo.cpp
 	<iostream>
 	<cstdlib>
 	"EmpleadoArchivo.h"
@@ -84,7 +85,7 @@
 	"Empleado.h"
 	"EmpleadoArchivo.h"
 
-1718678852 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
+1719288056 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
 	<iostream>
 	<cstdlib>
 	"EmpleadosManager.h"

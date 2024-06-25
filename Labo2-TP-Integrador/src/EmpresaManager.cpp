@@ -85,14 +85,6 @@ void EmpresaManager::menuModificarEmpresa()
     }
     while(opcion!=0);
 }
-void EmpresaManager::listarEmpresas(Empresa registro)
-{
-    cout << "ID EMPRESA    : " << registro.getIdEmpresa() << endl;
-    cout << "RAZON SOCIAL  : " << registro.getRazonSocial() << endl;
-    cout << "CUIT          : " << registro.getCuit() << endl;
-    cout << "FECHA DE ALTA : " << registro.getFechaAlta().toString() << endl;
-    cout << "ESTADO        : " << registro.getEstado() << endl;
-}
 
 void EmpresaManager::modificarNombreEmpresa()
 {
@@ -107,7 +99,7 @@ void EmpresaManager::modificarNombreEmpresa()
     if(posicion >= 0)
     {
         registro = _empresaArchivo.leer(posicion);
-        listarEmpresas(registro);
+        mostrarEmpresa(registro);
         cout << "----------------------------" << endl;
 
         string nuevoNombre;
@@ -126,7 +118,7 @@ void EmpresaManager::modificarNombreEmpresa()
 
 void EmpresaManager::modificarCuitEmpresa()
 {
-        system("cls");
+    system("cls");
     Empresa registro;
     int idEmpresa, posicion;
     cout << "Ingrese un ID de Empresa a buscar: ";
@@ -137,7 +129,7 @@ void EmpresaManager::modificarCuitEmpresa()
     if(posicion >= 0)
     {
         registro = _empresaArchivo.leer(posicion);
-        listarEmpresas(registro);
+        mostrarEmpresa(registro);
         cout << "----------------------------" << endl;
 
         string nuevoCuit;
@@ -172,16 +164,31 @@ void EmpresaManager::agregarEmpresa()
 
 void EmpresaManager::listarEmpresas()
 {
+
     int cantidad = _empresaArchivo.getCantidadRegistros();
 
-    for(int i = 0; i < cantidad; i++)
-    {
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Empresa *empresas;
+    empresas = new Empresa[cantidad];
 
-        cout << "--------------------------------" << endl;
-        mostrarEmpresa(_empresaArchivo.leer(i));
-        cout << "--------------------------------" << endl;
+    if(empresas == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _empresaArchivo.leerTodos(empresas,cantidad);
+
+    for(int i = 0;i<cantidad;i++)
+    {
+        if(empresas[i].getEstado())
+        {
+            cout << "--------------------------------" << endl;
+            mostrarEmpresa(empresas[i]);
+            cout << "--------------------------------" << endl;
+        }
     }
 
+delete [] empresas;
 
 }
 
@@ -232,7 +239,7 @@ void EmpresaManager::bajaEmpresa()
     if(posicion >=0)
     {
         registro = _empresaArchivo.leer(posicion);
-        listarEmpresas(registro);
+        mostrarEmpresa(registro);
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja la empresa? (0-Si/1-No) ";
         cin >> estado;

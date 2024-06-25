@@ -13,10 +13,8 @@ class EmpresaManager
     private:
 
         void agregarEmpresa();
-        void listarEmpresas();
-        void listarEmpresas(Empresa registro);
         Empresa crearEmpresa();
-
+        void listarEmpresas();
         void mostrarEmpresa(Empresa registro);
         void modificarNombreEmpresa();
         void modificarCuitEmpresa();

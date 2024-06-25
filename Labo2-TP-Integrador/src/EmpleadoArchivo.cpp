@@ -71,7 +71,7 @@ Empleado EmpleadoArchivo::leer(int indice)
 
 void EmpleadoArchivo::leerTodos(Empleado registros[], int cantidad)
 {
-    FILE *pFile = nullptr;
+    FILE *pFile;
 
     pFile = fopen("empleados.dat","rb");
 
