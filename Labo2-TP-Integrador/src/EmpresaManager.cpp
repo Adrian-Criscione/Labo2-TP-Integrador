@@ -165,6 +165,7 @@ void EmpresaManager::agregarEmpresa()
 void EmpresaManager::listarEmpresas()
 {
 
+    system("cls");
     int cantidad = _empresaArchivo.getCantidadRegistros();
 
     ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
