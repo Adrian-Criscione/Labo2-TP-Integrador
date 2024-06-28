@@ -71,18 +71,7 @@ Empleado EmpleadoArchivo::leer(int indice)
 
 void EmpleadoArchivo::leerTodos(Empleado registros[], int cantidad)
 {
-    FILE *pFile;
 
-    pFile = fopen("empleados.dat","rb");
-
-    if(pFile == nullptr)
-    {
-        return;
-    }
-
-    fread(registros,sizeof(Empleado),cantidad,pFile);
-
-    fclose(pFile);
 }
 
 int EmpleadoArchivo::buscarID(int idLegajo)
@@ -116,7 +105,10 @@ int EmpleadoArchivo::getCantidadRegistros()
     FILE *pFile;
     int tam;
     pFile = fopen("empleados.dat","rb");
-
+    if(pFile == nullptr)
+    {
+        return -1;
+    }
     fseek(pFile,0,SEEK_END);
     tam = ftell(pFile) / sizeof(Empleado);
 

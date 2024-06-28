@@ -35,6 +35,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/AppManager.h" />
+		<Unit filename="include/Area.h" />
+		<Unit filename="include/AreaArchivo.h" />
+		<Unit filename="include/AreasManager.h" />
 		<Unit filename="include/Empleado.h" />
 		<Unit filename="include/EmpleadoArchivo.h" />
 		<Unit filename="include/EmpleadosManager.h" />
@@ -45,6 +48,9 @@
 		<Unit filename="include/Persona.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AppManager.cpp" />
+		<Unit filename="src/Area.cpp" />
+		<Unit filename="src/AreaArchivo.cpp" />
+		<Unit filename="src/AreasManager.cpp" />
 		<Unit filename="src/Empleado.cpp" />
 		<Unit filename="src/EmpleadoArchivo.cpp" />
 		<Unit filename="src/EmpleadosManager.cpp" />

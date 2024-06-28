@@ -7,19 +7,21 @@ class Area
 public:
     // CONSTRUCTOR
     Area();
-    Area(int idArea, std::string nombre);
+    Area(int idArea, std::string nombre, bool estado);
 
     // GETTERS
     int getIdArea();
     std::string getNombre();
+    bool getEstado();
 
     // SETTERS
     void setIdArea(int idArea);
     void setNombre(std::string nombre);
+    void setEstado(bool estado);
 
 private:
     int _idArea;
     char _nombre[20];
-    //bool _estado;
+    bool _estado;
 };
 #endif // AREA_H

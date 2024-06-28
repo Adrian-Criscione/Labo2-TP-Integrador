@@ -143,7 +143,7 @@ Area AreasManager::crearArea()
 {
     int idArea;
     string nombre;
-
+    bool estado = true;
     idArea = _areaArchivo.getNuevoID();
     cout << "Ingrese un ID: " << idArea << endl;
 
@@ -151,7 +151,7 @@ Area AreasManager::crearArea()
     cout << "Ingrese Nombre: ";
     getline(cin, nombre);
 
-    return Area(idArea, nombre);
+    return Area(idArea, nombre, estado);
 }
 
 void AreasManager::mostrarArea(Area registro)

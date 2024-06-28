@@ -8,13 +8,15 @@ Area::Area()
 {
     _idArea = 0;
     strcpy(_nombre, "");
+    _estado = true;
 }
 
 // Constructor con parámetros
-Area::Area(int idArea, std::string nombre)
+Area::Area(int idArea, std::string nombre, bool estado)
 {
     setIdArea(idArea);
     setNombre(nombre);
+    setEstado(estado);
 }
 
 // Getter para _idArea
@@ -39,4 +41,13 @@ void Area::setIdArea(int idArea)
 void Area::setNombre(std::string nombre)
 {
     strcpy(_nombre, nombre.c_str());
+}
+bool Area::getEstado()
+{
+   return _estado;
+}
+
+void Area::setEstado(bool estado)
+{
+    _estado = estado;
 }
