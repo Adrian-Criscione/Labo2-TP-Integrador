@@ -42,7 +42,7 @@
 	"Empresa.h"
 	"EmpresaArchivo.h"
 
-1719291770 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
+1719291983 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
 	<iostream>
 	<cstdlib>
 	"EmpresaManager.h"
