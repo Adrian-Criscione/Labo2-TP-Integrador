@@ -22,7 +22,7 @@ bool UsuarioArchivo::guardar(Usuario registro)
     return resultado;
 
 }
-
+///SE UTILIZA PARA MODIFICAR EL ARCHIVO
 bool UsuarioArchivo::guardar(int indice, Usuario registro)
 {
     bool resultado;

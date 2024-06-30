@@ -7,15 +7,16 @@
 class AreasManager
 {
 public:
+
     void menuArea();
     void menuModificarArea();
 
 private:
-    void agregarArea();
-    void listarAreas();
-    void listarAreas(Area registro);
-    Area crearArea();
 
+    void agregarArea();
+    Area crearArea();
+    void listarAreas();
+    void mostrarEncabezado();
     void mostrarArea(Area registro);
     void modificarNombreArea();
     void bajaArea();

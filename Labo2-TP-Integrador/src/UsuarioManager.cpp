@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "UsuarioManager.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ void UsuarioManager::menuUsuario()
         cout << "1- AGREGAR USUARIO " << endl;
         cout << "2- LISTAR TODOS LOS USUARIOS" << endl;
         cout << "3- MODIFICAR USUARIO" << endl;
+        cout << "4- BAJA USUSARIO" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
         cout << "Opcion: ";
@@ -34,6 +36,10 @@ void UsuarioManager::menuUsuario()
             break;
         case 3:
             menuModificarUsuario();
+            system("pause");
+            break;
+        case 4:
+            bajaUsuario();
             system("pause");
             break;
         }
@@ -54,7 +60,6 @@ void UsuarioManager::menuModificarUsuario()
         cout << "1- MODIFICAR NOMBRE" << endl;
         cout << "2- MODIFICAR CLAVE" << endl;
         cout << "3- MODIFICAR NIVEL DE ACCESO" << endl;
-        cout << "4- MODIFICAR ESTADO" << endl;
         cout << "-------------------------------------" << endl;
         cout << "0- SALIR" << endl;
         cout << "Opcion: ";
@@ -72,10 +77,6 @@ void UsuarioManager::menuModificarUsuario()
             break;
         case 3:
             modificarNivelAccesoUsuario();
-            system("pause");
-            break;
-        case 4:
-            modificarEstadoUsuario();
             system("pause");
             break;
         }
@@ -170,7 +171,7 @@ void UsuarioManager::modificarNivelAccesoUsuario()
     }
 }
 
-void UsuarioManager::modificarEstadoUsuario()
+void UsuarioManager::bajaUsuario()
 {
     system("cls");
     Usuario usuario;
@@ -216,26 +217,37 @@ void UsuarioManager::listarUsuarios()
     system("cls");
     int cantidad = _usuarioArchivo.getCantidadRegistros();
 
-    Usuario* usuarios = new Usuario[cantidad];
-    if (usuarios == nullptr)
+    if(cantidad >0)
     {
-        cout << "No se pudo obtener la memoria solicitada." << endl;
+        Usuario* usuarios = new Usuario[cantidad];
+        if (usuarios == nullptr)
+        {
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
+        }
+
+        _usuarioArchivo.leerTodos(usuarios, cantidad);
+
+        mostrarEncabezado();
+        for (int i = 0; i < cantidad; i++)
+        {
+            if (usuarios[i].getEstado())
+            {
+
+
+                mostrarUsuario(usuarios[i]);
+
+            }
+        }
+
+        delete[] usuarios;
+    }
+    else
+    {
+        cout << "No hay usuarios para listar." << endl;
         return;
     }
 
-    _usuarioArchivo.leerTodos(usuarios, cantidad);
-
-    for (int i = 0; i < cantidad; i++)
-    {
-        if (usuarios[i].getEstado())
-        {
-            cout << "--------------------------------" << endl;
-            mostrarUsuario(usuarios[i]);
-            cout << "--------------------------------" << endl;
-        }
-    }
-
-    delete[] usuarios;
 }
 
 Usuario UsuarioManager::crearUsuario()
@@ -245,7 +257,7 @@ Usuario UsuarioManager::crearUsuario()
     int dia, mes, anio;
     float clave;
     int accesoNivel;
-    bool estado;
+    bool estado = true;
 
     idUsuario = _usuarioArchivo.getNuevoID();
     cout << "ID asignado: " << idUsuario << endl;
@@ -260,21 +272,41 @@ Usuario UsuarioManager::crearUsuario()
     cout << "Ingrese fecha de nacimiento (dd mm aaaa): ";
     cin >> dia >> mes >> anio;
     Fecha fechaNacimiento(dia,mes,anio);
+    cin.ignore();
     cout << "Ingrese el nombre de usuario: ";
     getline(cin, nombreUsuario);
     cout << "Ingrese la clave del usuario: ";
     cin >> clave;
+    cin.ignore();
     cout << "Ingrese el nivel de acceso del usuario: ";
     cin >> accesoNivel;
-    cout << "Ingrese el estado del usuario (1: activo, 0: inactivo): ";
-    cin >> estado;
 
     return Usuario(nombre,apellido,dni,fechaNacimiento,idUsuario,nombreUsuario,clave,accesoNivel,estado);
 
 }
+void UsuarioManager::mostrarEncabezado()
+{
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    cout << left
+         << setw(6)  << " ID" << setw(15) << " APELLIDO" << setw(15) << " NOMBRE"
+         << setw(12) << " DNI" << setw(12) << " USUARIO" << setw(12) << " CLAVE"
+         << setw(10)  << " ACCESO" << setw(10) << " ESTADO" << endl;
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+}
 
 void UsuarioManager::mostrarUsuario(Usuario registro)
 {
+    cout << left <<" "
+         << setw(6) << registro.getIdUsuario()
+         << setw(15) << registro.getApellido()
+         << setw(15) << registro.getNombre()
+         << setw(12) << registro.getDNI()
+         << setw(12) << registro.getUsuario()
+         << setw(12) << registro.getClave()
+         << setw(10)  << registro.getAccesoNivel()
+         << setw(10)  << (registro.getEstado() ? "Activo" : "Baja")
+         << endl;
+    /*
     cout << "ID Usuario: " << registro.getIdUsuario() << endl;
     cout << "Nombre: " << registro.getNombre() << endl;
     cout << "Apellido: " << registro.getApellido() << endl;
@@ -283,4 +315,5 @@ void UsuarioManager::mostrarUsuario(Usuario registro)
     cout << "Clave: " << registro.getClave() << endl;
     cout << "Nivel de Acceso: " << registro.getAccesoNivel() << endl;
     cout << "Estado: " << (registro.getEstado() ? "Activo" : "Inactivo") << endl;
+    */
 }

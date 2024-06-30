@@ -24,10 +24,6 @@ public:
     //void hacerBackup(const char* nombreBackup);
     //void restaurarBackup(const char* nombreBackup);
 
-private:
-    /*
-    bool verificarArchivo(const char* nombreArchivo);
-    bool crearArchivo(const char* nombreArchivo);*/
 };
 
 #endif // USUARIOARCHIVO_H

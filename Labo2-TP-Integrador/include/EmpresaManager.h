@@ -5,23 +5,23 @@
 
 class EmpresaManager
 {
-    public:
+public:
 
-        void menuEmpresa();
-        void menuModificarEmpresa();
+    void menuEmpresa();
+    void menuModificarEmpresa();
 
-    private:
+private:
 
-        void agregarEmpresa();
-        Empresa crearEmpresa();
-        void listarEmpresas();
-        void mostrarEmpresa(Empresa registro);
-        void modificarNombreEmpresa();
-        void modificarCuitEmpresa();
-        void bajaEmpresa();
-        void ordenarEmpresaPorNombre(Empresa *empresas, int cantidad);
+    void agregarEmpresa();
+    Empresa crearEmpresa();
+    void listarEmpresas();
+    void mostrarEmpresa(Empresa registro);
+    void modificarNombreEmpresa();
+    void modificarCuitEmpresa();
+    void bajaEmpresa();
+    void ordenarEmpresaPorNombre(Empresa *empresas, int cantidad);
 
-        EmpresaArchivo _empresaArchivo;
+    EmpresaArchivo _empresaArchivo;
 
 };
 

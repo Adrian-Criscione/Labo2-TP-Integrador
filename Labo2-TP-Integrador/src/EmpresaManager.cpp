@@ -161,7 +161,7 @@ void EmpresaManager::agregarEmpresa()
 
 
 }
-
+///ESTE METODO LISTA TODAS LAS EMPRESAS CON MEMORIA DINAMICA.
 void EmpresaManager::listarEmpresas()
 {
 

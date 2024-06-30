@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "AreasManager.h"
 
 using namespace std;
@@ -80,12 +81,6 @@ void AreasManager::menuModificarArea()
     while(opcion != 0);
 }
 
-void AreasManager::listarAreas(Area registro)
-{
-    cout << "ID AREA    : " << registro.getIdArea() << endl;
-    cout << "NOMBRE     : " << registro.getNombre() << endl;
-}
-
 void AreasManager::modificarNombreArea()
 {
     system("cls");
@@ -99,7 +94,7 @@ void AreasManager::modificarNombreArea()
     if(posicion >= 0)
     {
         registro = _areaArchivo.leer(posicion);
-        listarAreas(registro);
+        mostrarArea(registro);
         cout << "----------------------------" << endl;
 
         string nuevoNombre;
@@ -129,14 +124,34 @@ void AreasManager::agregarArea()
 
 void AreasManager::listarAreas()
 {
+    system("cls");
     int cantidad = _areaArchivo.getCantidadRegistros();
 
-    for(int i = 0; i < cantidad; i++)
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Area *areas;
+    areas = new Area[cantidad];
+
+    if(areas == nullptr)
     {
-        cout << "--------------------------------" << endl;
-        mostrarArea(_areaArchivo.leer(i));
-        cout << "--------------------------------" << endl;
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
     }
+    _areaArchivo.leerTodos(areas,cantidad);
+
+    mostrarEncabezado();
+
+
+    for(int i = 0;i<cantidad;i++)
+    {
+        if(areas[i].getEstado())
+        {
+
+            mostrarArea(areas[i]);
+        }
+    }
+    cout << endl;
+delete [] areas;
+
 }
 
 Area AreasManager::crearArea()
@@ -153,11 +168,20 @@ Area AreasManager::crearArea()
 
     return Area(idArea, nombre, estado);
 }
+void AreasManager::mostrarEncabezado()
+{
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    cout << left << setw(6)  << " ID" << setw(15) << " AREA" << setw(10) << " ESTADO" << endl;
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
 
+}
 void AreasManager::mostrarArea(Area registro)
 {
-    cout << "ID Area: " << registro.getIdArea() << endl;
-    cout << "Nombre: " << registro.getNombre() << endl;
+        cout << left <<" "
+         << setw(6) << registro.getIdArea()
+         << setw(15) << registro.getNombre()
+         << setw(10)  << (registro.getEstado() ? "Activo" : "Baja")
+         << endl;
 }
 
 void AreasManager::bajaArea()
@@ -173,7 +197,7 @@ void AreasManager::bajaArea()
     if(posicion >=0)
     {
         registro = _areaArchivo.leer(posicion);
-        listarAreas(registro);
+        mostrarArea(registro);
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el área? (0-Si/1-No) ";
         cin >> estado;

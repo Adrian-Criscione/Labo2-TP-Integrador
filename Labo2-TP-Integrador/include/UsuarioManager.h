@@ -15,12 +15,15 @@ private:
     void agregarUsuario();
     void listarUsuarios();
 
+
     void modificarNombreUsuario();
     void modificarClaveUsuario();
     void modificarNivelAccesoUsuario();
-    void modificarEstadoUsuario();
+
+    void bajaUsuario();
 
     Usuario crearUsuario();
+    void mostrarEncabezado();
     void mostrarUsuario(Usuario registro);
 
     UsuarioArchivo _usuarioArchivo;
