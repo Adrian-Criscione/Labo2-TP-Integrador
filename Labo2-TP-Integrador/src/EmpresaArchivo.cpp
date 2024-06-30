@@ -1,15 +1,22 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 #include "EmpresaArchivo.h"
 
 using namespace std;
+
+EmpresaArchivo::EmpresaArchivo()
+{
+    strcpy(_nombre,"empresas.dat");
+
+}
 
 bool EmpresaArchivo::guardar(Empresa registro)
 {
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empresas.dat","ab");
+    pFile = fopen(_nombre,"ab");
 
     if(pFile == nullptr)
     {
@@ -28,7 +35,7 @@ bool EmpresaArchivo::guardar(int indice, Empresa registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empresas.dat", "rb+");
+    pFile = fopen(_nombre, "rb+");
 
     if(pFile == nullptr)
     {
@@ -51,7 +58,7 @@ Empresa EmpresaArchivo::leer(int indice)
     Empresa registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empresas.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -72,7 +79,7 @@ void EmpresaArchivo::leerTodos(Empresa registros[], int cantidad)
 {
     FILE *pFile = nullptr;
 
-    pFile = fopen("empresas.dat","rb");
+    pFile = fopen(_nombre, "rb");
 
     if(pFile == nullptr)
     {
@@ -91,7 +98,7 @@ int EmpresaArchivo::buscarID(int idEmpresa)
     int pos = 0;
     FILE *pFile;
 
-    pFile = fopen("empresas.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -115,7 +122,7 @@ int EmpresaArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen("empresas.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     fseek(pFile,0,SEEK_END);
     tam = ftell(pFile) / sizeof(Empresa);

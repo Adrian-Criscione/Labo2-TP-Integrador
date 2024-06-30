@@ -107,7 +107,6 @@ void EmpleadosManager::listarEmpleado(Empleado registro)
     cout << "NOMBRE           : " << registro.getNombre() << endl;
     cout << "DNI              : " << registro.getDNI() << endl;
     cout << "AREA             : " << registro.getIdArea() << endl;
-    cout << "ROL              : " << registro.getIdRol() << endl;
     cout << "HORAS TRABAJADAS : " << registro.getHorasTrabajadas() << endl;
     cout << "SUELDO           : " << registro.getSueldo() << endl;
     cout << "FECHA DE ALTA    : " << registro.geFechaContratacion().toString() << endl;
@@ -126,7 +125,6 @@ Empleado EmpleadosManager::crearEmpleado()
     int idLegajo;
     int idEmpresa;
     int idArea;
-    int idRol;
     float horasTrabajadas;
     float sueldo;
     //Fecha fechaContratacion;
@@ -146,15 +144,10 @@ Empleado EmpleadosManager::crearEmpleado()
     cout << "Ingrese fecha de nacimiento (dd mm aaaa): ";
     cin >> dia >> mes >> anio;
     Fecha fechaNacimiento(dia,mes,anio);
-    cout << "Ingrese fecha de alta (dd mm aaaa): ";
-    cin >> dia >> mes >> anio;
-    Fecha fechaAlta(dia,mes,anio);
     cout << "Ingrese ID de empresa: ";
     cin >> idEmpresa;
     cout << "Ingrese ID de área: ";
     cin >> idArea;
-    cout << "Ingrese ID de rol: ";
-    cin >> idRol;
     cout << "Ingrese horas trabajadas: ";
     cin >> horasTrabajadas;
     cout << "Ingrese sueldo: ";
@@ -164,10 +157,10 @@ Empleado EmpleadosManager::crearEmpleado()
     Fecha fechaContratacion(dia,mes,anio);
 
 
-    return Empleado(nombre,apellido,dni,fechaAlta,idLegajo,idEmpresa,idArea,idRol,horasTrabajadas,sueldo,fechaContratacion,fechaBaja,estado);
+    return Empleado(nombre,apellido,dni,fechaNacimiento,idLegajo,idEmpresa,idArea,horasTrabajadas,sueldo,fechaContratacion,fechaBaja,estado);
 }
 
-///TODO: BORRAR
+
 void EmpleadosManager::mostrarEmpleado(Empleado registro)
 {
     cout << "ID LEGAJO        : " << registro.getIdLegajo() << endl;
@@ -175,7 +168,6 @@ void EmpleadosManager::mostrarEmpleado(Empleado registro)
     cout << "NOMBRE           : " << registro.getNombre() << endl;
     cout << "DNI              : " << registro.getDNI() << endl;
     cout << "AREA             : " << registro.getIdArea() << endl;
-    cout << "ROL              : " << registro.getIdRol() << endl;
     cout << "HORAS TRABAJADAS : " << registro.getHorasTrabajadas() << endl;
     cout << "SUELDO           : " << registro.getSueldo() << endl;
     cout << "FECHA DE ALTA    : " << registro.geFechaContratacion().toString() << endl;
@@ -195,7 +187,7 @@ void EmpleadosManager::bajaEmpleado()
     if(posicion >=0)
     {
         registro = _empleadoArchivo.leer(posicion);
-        listarEmpleado(registro);
+        mostrarEmpleado(registro);
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el empleado seleccionado? (1-Si/0-No): ";
         cin >> estado;

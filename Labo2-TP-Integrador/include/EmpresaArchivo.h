@@ -5,7 +5,7 @@
 class EmpresaArchivo
 {
 public:
-
+    EmpresaArchivo();
     bool guardar(Empresa registro);
     bool guardar(int indice, Empresa registro);
     Empresa leer(int indice);
@@ -16,6 +16,8 @@ public:
 
     int getCantidadRegistros();
     int getNuevoID();
+private:
+    char _nombre[30];
 };
 
 #endif // EMPRESAARCHIVO_H

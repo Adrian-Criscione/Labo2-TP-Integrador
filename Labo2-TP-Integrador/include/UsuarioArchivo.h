@@ -9,6 +9,7 @@ using namespace std;
 class UsuarioArchivo
 {
 public:
+    UsuarioArchivo();
     bool guardar(Usuario registro);
     bool guardar(int indice, Usuario registro);
     Usuario leer(int indice);
@@ -23,7 +24,8 @@ public:
     ///METODOS COMENTADOS BREVEMENTE
     //void hacerBackup(const char* nombreBackup);
     //void restaurarBackup(const char* nombreBackup);
-
+private:
+    char _nombre[30];
 };
 
 #endif // USUARIOARCHIVO_H

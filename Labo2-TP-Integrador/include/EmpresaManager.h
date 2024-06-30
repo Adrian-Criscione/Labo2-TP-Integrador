@@ -15,6 +15,7 @@ private:
     void agregarEmpresa();
     Empresa crearEmpresa();
     void listarEmpresas();
+    void mostrarEncabezado();
     void mostrarEmpresa(Empresa registro);
     void modificarNombreEmpresa();
     void modificarCuitEmpresa();

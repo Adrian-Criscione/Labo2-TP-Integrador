@@ -11,19 +11,17 @@ Empleado::Empleado() : Persona()
     _idLegajo = 0;
     _idEmpresa = 0;
     _idArea = 0;
-    _idRol = 0;
     _horasTrabajadas = 0.0f;
     _sueldo = 0.0f;
     _fechaContratacion =Fecha();
     _fechaBaja = Fecha();
     _estado = true;
 }
-Empleado::Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento, int idLegajo, int idEmpresa, int idArea, int idRol, float horasTrabajadas, float sueldo, Fecha fechaContratacion, Fecha fechaBaja, bool estado) : Persona(nombre,apellido, DNI, fechaNacimiento)
+Empleado::Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento, int idLegajo, int idEmpresa, int idArea, float horasTrabajadas, float sueldo, Fecha fechaContratacion, Fecha fechaBaja, bool estado) : Persona(nombre,apellido, DNI, fechaNacimiento)
 {
     setIdLegajo(idLegajo);
     setIdEmpresa(idEmpresa);
     setIdArea(idArea);
-    setIdRol(idRol);
     setHorasTrabajadas(horasTrabajadas);
     setSueldo(sueldo);
     setFechaContratacion(fechaContratacion);
@@ -48,11 +46,6 @@ int Empleado::getIdArea()
     return _idArea;
 }
 
-int Empleado::getIdRol()
-{
-    return _idRol;
-
-}
 
 float Empleado::getHorasTrabajadas()
 {
@@ -100,10 +93,6 @@ void Empleado::setIdArea(int idArea)
     _idArea = idArea;
 }
 
-void Empleado::setIdRol(int idRol)
-{
-    _idRol = idRol;
-}
 
 void Empleado::setHorasTrabajadas(float horasTrabajadas)
 {

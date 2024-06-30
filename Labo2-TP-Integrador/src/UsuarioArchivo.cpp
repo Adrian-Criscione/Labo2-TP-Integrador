@@ -1,15 +1,19 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
 #include "UsuarioArchivo.h"
 
-
+UsuarioArchivo::UsuarioArchivo()
+{
+    strcpy(_nombre,"usuarios.dat");
+}
 bool UsuarioArchivo::guardar(Usuario registro)
 {
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("usuarios.dat","ab");
+    pFile = fopen(_nombre,"ab");
 
     if(pFile == nullptr)
     {
@@ -28,7 +32,7 @@ bool UsuarioArchivo::guardar(int indice, Usuario registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("usuarios.dat", "rb+");
+    pFile = fopen(_nombre, "rb+");
 
     if(pFile == nullptr)
     {
@@ -50,7 +54,7 @@ Usuario UsuarioArchivo::leer(int indice)
     Usuario registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen("usuarios.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -70,7 +74,7 @@ void UsuarioArchivo::leerTodos(Usuario registros[], int cantidad)
 {
     FILE *pFile;
 
-    pFile = fopen("usuarios.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -88,7 +92,7 @@ int UsuarioArchivo::buscarID(int idUsuario)
     int pos = 0;
     FILE *pFile;
 
-    pFile = fopen("usuarios.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -113,7 +117,7 @@ int UsuarioArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen("usuarios.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {

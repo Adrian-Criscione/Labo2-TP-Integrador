@@ -5,8 +5,9 @@
 
 class EmpleadoArchivo
 {
-public:
 
+public:
+    EmpleadoArchivo();
     bool guardar(Empleado registro);
     bool guardar(int indice, Empleado registro);
     Empleado leer(int indice);
@@ -17,6 +18,8 @@ public:
 
     int getCantidadRegistros();
     int getNuevoID();
+private:
+    char _nombre[30];
 };
 
 #endif // EMPLEADOARCHIVO_H

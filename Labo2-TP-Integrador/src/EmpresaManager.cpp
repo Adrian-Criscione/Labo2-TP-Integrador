@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "EmpresaManager.h"
 
 using namespace std;
@@ -179,17 +180,18 @@ void EmpresaManager::listarEmpresas()
     }
     _empresaArchivo.leerTodos(empresas,cantidad);
 
-    for(int i = 0;i<cantidad;i++)
+    mostrarEncabezado();
+    for(int i = 0; i<cantidad; i++)
     {
         if(empresas[i].getEstado())
         {
-            cout << "--------------------------------" << endl;
+
             mostrarEmpresa(empresas[i]);
-            cout << "--------------------------------" << endl;
+
         }
     }
-
-delete [] empresas;
+    cout << endl;
+    delete [] empresas;
 
 }
 
@@ -213,18 +215,21 @@ Empresa EmpresaManager::crearEmpresa()
 
     return Empresa(idEmpresa,razonSocial,cuit,fechaAlta,true);
 
-
-
 }
 
+void EmpresaManager::mostrarEncabezado()
+{
+
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    cout << left << setw(6)  << "ID" << setw(30) << "RAZON SOCIAL" << setw(15) << "CUIT"
+         << setw(12) << "FECHA ALTA" << setw(10) << "ESTADO"<< endl;
+    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+}
 void EmpresaManager::mostrarEmpresa(Empresa registro)
 {
-    cout << "ID Empresa: " << registro.getIdEmpresa() << endl;
-    cout << "Razon Social: " << registro.getRazonSocial() << endl;
-    cout << "CUIT: " << registro.getCuit() << endl;
-    cout << "Fehca de Alta: " << registro.getFechaAlta().toString() << endl;
-    cout << "Estado: " << (registro.getEstado()? "Activo" : "Baja") << endl; // 1 = Activo 0 = Baja
-
+    cout << setw(6)<< registro.getIdEmpresa() << setw(30) << registro.getRazonSocial()
+         << setw(15)<< registro.getCuit() << setw(12) << registro.getFechaAlta().toString()
+         << setw(10) << (registro.getEstado()? "Activo" : "Baja") << endl; // 1 = Activo 0 = Baja
 }
 
 

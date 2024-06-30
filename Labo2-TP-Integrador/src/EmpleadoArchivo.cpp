@@ -1,17 +1,22 @@
 #include <iostream>
 #include <cstdlib>
-
+#include <cstring>
 
 using namespace std;
 
 #include "EmpleadoArchivo.h"
+
+EmpleadoArchivo::EmpleadoArchivo()
+{
+    strcpy(_nombre,"empleados.dat");
+}
 
 bool EmpleadoArchivo::guardar(Empleado registro)
 {
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empleados.dat","ab");
+    pFile = fopen(_nombre,"ab");
 
     if(pFile == nullptr)
     {
@@ -30,7 +35,7 @@ bool EmpleadoArchivo::guardar(int indice, Empleado registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empleados.dat", "rb+");
+    pFile = fopen(_nombre, "rb+");
 
     if(pFile == nullptr)
     {
@@ -53,7 +58,7 @@ Empleado EmpleadoArchivo::leer(int indice)
     Empleado registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen("empleados.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -71,6 +76,19 @@ Empleado EmpleadoArchivo::leer(int indice)
 
 void EmpleadoArchivo::leerTodos(Empleado registros[], int cantidad)
 {
+    FILE *pFile = nullptr;
+
+    pFile = fopen(_nombre,"rb");
+
+    if(pFile == nullptr)
+    {
+        return;
+    }
+
+    fread(registros,sizeof(Empleado),cantidad,pFile);
+
+    fclose(pFile);
+
 
 }
 
@@ -80,7 +98,7 @@ int EmpleadoArchivo::buscarID(int idLegajo)
     int pos = 0;
     FILE *pFile;
 
-    pFile = fopen("empleados.dat","rb");
+    pFile = fopen(_nombre,"rb");
 
     if(pFile == nullptr)
     {
@@ -104,7 +122,7 @@ int EmpleadoArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen("empleados.dat","rb");
+    pFile = fopen(_nombre,"rb");
     if(pFile == nullptr)
     {
         return -1;
