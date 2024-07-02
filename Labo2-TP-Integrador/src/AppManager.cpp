@@ -15,14 +15,13 @@ void AppManager::menuPrincipal()
         system("cls");
 
         cout << "-----------------------------" << endl;
-        cout << "------ MENU PRINCIPAL ------- " << endl;
+        cout << "------ MENU PRINCIPAL -------" << endl;
         cout << "-----------------------------" << endl;
         cout << "1- EMPRESAS " << endl;
         cout << "2- EMPLEADOS" << endl;
         cout << "3- AREAS" << endl;
         cout << "4- REPORTES" << endl;
         cout << "5- USUARIOS" << endl;
-        cout << "6- CONFIGURACION" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
         cout << "Opcion: ";
@@ -53,10 +52,6 @@ void AppManager::menuPrincipal()
         case 5:
             /// MENU USUARIOS
             _um.menuUsuario();
-            system("pause");
-            break;
-        case 6:
-            /// MENU CONFIGURACION
             system("pause");
             break;
         }

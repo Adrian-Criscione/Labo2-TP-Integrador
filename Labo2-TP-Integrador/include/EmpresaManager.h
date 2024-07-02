@@ -20,9 +20,11 @@ private:
     void modificarNombreEmpresa();
     void modificarCuitEmpresa();
     void bajaEmpresa();
-    void ordenarEmpresaPorNombre(Empresa *empresas, int cantidad);
+    void HacerCopiaSeguridad();
+    void RestaurarCopiaSeguridad();
 
     EmpresaArchivo _empresaArchivo;
+    EmpresaArchivo _empresaBkp = EmpresaArchivo("Backup/Empresas.bkp");
 
 };
 

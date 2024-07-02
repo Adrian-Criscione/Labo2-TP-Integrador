@@ -12,6 +12,8 @@ public:
     // GETTERS
     int getIdArea();
     std::string getNombre();
+    std::string getNombreID();
+    std::string toString();
     bool getEstado();
 
     // SETTERS

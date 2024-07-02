@@ -7,16 +7,26 @@ using namespace std;
 
 EmpresaArchivo::EmpresaArchivo()
 {
-    strcpy(_nombre,"empresas.dat");
+    _nombre = "Datos/empresas.dat";
 
 }
+EmpresaArchivo::EmpresaArchivo(std::string nombre)
+{
+    setNombreArchivo(nombre);
+}
+
+void EmpresaArchivo::setNombreArchivo(std::string nombre)
+{
+    _nombre = nombre;
+}
+
 
 bool EmpresaArchivo::guardar(Empresa registro)
 {
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre,"ab");
+    pFile = fopen(_nombre.c_str(),"ab");
 
     if(pFile == nullptr)
     {
@@ -35,7 +45,7 @@ bool EmpresaArchivo::guardar(int indice, Empresa registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb+");
+    pFile = fopen(_nombre.c_str(), "rb+");
 
     if(pFile == nullptr)
     {
@@ -52,13 +62,31 @@ bool EmpresaArchivo::guardar(int indice, Empresa registro)
 
 }
 
+bool EmpresaArchivo::guardar(Empresa* empresas, int cantidadRegistros)
+{
+    FILE *pFile = nullptr;
+    int resultado = 0;
+    pFile = fopen(_nombre.c_str(), "ab");
+
+    if(pFile == nullptr)
+    {
+        return false;
+    }
+
+    resultado = fwrite(empresas,sizeof(Empresa),cantidadRegistros,pFile);
+    fclose(pFile);
+    return resultado == cantidadRegistros;
+}
+
+
+
 Empresa EmpresaArchivo::leer(int indice)
 {
     //bool resultado;
     Empresa registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
 
     if(pFile == nullptr)
     {
@@ -79,7 +107,7 @@ void EmpresaArchivo::leerTodos(Empresa registros[], int cantidad)
 {
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb");
+    pFile = fopen(_nombre.c_str(), "rb");
 
     if(pFile == nullptr)
     {
@@ -98,7 +126,7 @@ int EmpresaArchivo::buscarID(int idEmpresa)
     int pos = 0;
     FILE *pFile;
 
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
 
     if(pFile == nullptr)
     {
@@ -122,8 +150,11 @@ int EmpresaArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen(_nombre,"rb");
-
+    pFile = fopen(_nombre.c_str(),"rb");
+    if(pFile == nullptr)
+    {
+        return -1;
+    }
     fseek(pFile,0,SEEK_END);
     tam = ftell(pFile) / sizeof(Empresa);
 
@@ -148,3 +179,15 @@ int EmpresaArchivo::getNuevoID()
 
 }
 
+void EmpresaArchivo::vaciar()
+{
+    FILE *pFile;
+    pFile = fopen(_nombre.c_str(),"wb");
+    if(pFile == nullptr)
+    {
+        return;
+    }
+
+    fclose(pFile);
+
+}

@@ -20,10 +20,11 @@ void AreasManager::menuArea()
         cout << "2- LISTAR TODAS LAS AREAS" << endl;
         cout << "3- MODIFICAR AREA" << endl;
         cout << "4- ELIMINAR AREA" << endl;
-        cout << "5- LISTAR ORDENADAS POR NOMBRE" << endl;
+        cout << "5- BACKUP ARCHIVO AREAS" << endl;
+        cout << "6- RESTORE ARCHIVO AREAS" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
-        cout << "Opción: "<< endl;
+        cout << "Opción: ";
         cin >> opcion;
 
         switch(opcion)
@@ -45,8 +46,11 @@ void AreasManager::menuArea()
             system("pause");
             break;
         case 5:
-            //ordenarAreasPorNombre();
-            cout << "Falta desarrollar." << endl;
+            HacerCopiaSeguridad();
+            system("pause");
+            break;
+        case 6:
+            RestaurarCopiaSeguridad();
             system("pause");
             break;
         }
@@ -141,7 +145,7 @@ void AreasManager::listarAreas()
     mostrarEncabezado();
 
 
-    for(int i = 0;i<cantidad;i++)
+    for(int i = 0; i<cantidad; i++)
     {
         if(areas[i].getEstado())
         {
@@ -150,7 +154,7 @@ void AreasManager::listarAreas()
         }
     }
     cout << endl;
-delete [] areas;
+    delete [] areas;
 
 }
 
@@ -177,7 +181,7 @@ void AreasManager::mostrarEncabezado()
 }
 void AreasManager::mostrarArea(Area registro)
 {
-        cout << left <<" "
+    cout << left <<" "
          << setw(6) << registro.getIdArea()
          << setw(15) << registro.getNombre()
          << setw(10)  << (registro.getEstado() ? "Activo" : "Baja")
@@ -186,7 +190,7 @@ void AreasManager::mostrarArea(Area registro)
 
 void AreasManager::bajaArea()
 {
-    /*
+
     Area registro;
     int idArea, posicion;
     bool estado;
@@ -201,7 +205,7 @@ void AreasManager::bajaArea()
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el área? (0-Si/1-No) ";
         cin >> estado;
-        registro.se(estado);
+        registro.setEstado(estado);
         _areaArchivo.guardar(posicion, registro);
         cout << "El Área " << registro.getNombre() << " se ha dado de baja." << endl;
     }
@@ -209,11 +213,59 @@ void AreasManager::bajaArea()
     {
         cout << "No existe un área con ID " << idArea << endl;
     }
-    */
+
 }
 
-void AreasManager::ordenarAreasPorNombre(Area *areas, int cantidad)
+void AreasManager::HacerCopiaSeguridad()
 {
-    // Implementar ordenamiento por nombre (si se requiere)
+    system("cls");
+    int cantidad = _areaArchivo.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Area *areas;
+    areas = new Area[cantidad];
+
+    if(areas == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _areaArchivo.leerTodos(areas,cantidad);
+    _areaBkp.vaciar();
+    if(_areaBkp.guardar(areas,cantidad))
+    {
+        cout << "BACKUP REALIZADO CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO EL BACKUP." << endl;
+    }
+    delete [] areas;
 }
 
+void AreasManager::RestaurarCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _areaBkp.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Area *areas;
+    areas = new Area[cantidad];
+
+    if(areas == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _areaBkp.leerTodos(areas,cantidad);
+    _areaArchivo.vaciar();
+    if(_areaArchivo.guardar(areas,cantidad))
+    {
+        cout << "RESTAURACION REALIZADA CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO LA RESTAURACION." << endl;
+    }
+    delete [] areas;
+}

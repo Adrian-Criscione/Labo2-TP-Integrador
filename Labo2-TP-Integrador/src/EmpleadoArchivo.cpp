@@ -8,7 +8,15 @@ using namespace std;
 
 EmpleadoArchivo::EmpleadoArchivo()
 {
-    strcpy(_nombre,"empleados.dat");
+    _nombre = "Datos/empleados.dat";
+}
+EmpleadoArchivo::EmpleadoArchivo(std::string nombre)
+{
+    setNombreArchivo(nombre);
+}
+void EmpleadoArchivo::setNombreArchivo(std::string nombre)
+{
+    _nombre = nombre;
 }
 
 bool EmpleadoArchivo::guardar(Empleado registro)
@@ -16,7 +24,7 @@ bool EmpleadoArchivo::guardar(Empleado registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre,"ab");
+    pFile = fopen(_nombre.c_str(),"ab");
 
     if(pFile == nullptr)
     {
@@ -35,7 +43,7 @@ bool EmpleadoArchivo::guardar(int indice, Empleado registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb+");
+    pFile = fopen(_nombre.c_str(), "rb+");
 
     if(pFile == nullptr)
     {
@@ -58,7 +66,7 @@ Empleado EmpleadoArchivo::leer(int indice)
     Empleado registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
 
     if(pFile == nullptr)
     {
@@ -78,7 +86,7 @@ void EmpleadoArchivo::leerTodos(Empleado registros[], int cantidad)
 {
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
 
     if(pFile == nullptr)
     {
@@ -98,7 +106,7 @@ int EmpleadoArchivo::buscarID(int idLegajo)
     int pos = 0;
     FILE *pFile;
 
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
 
     if(pFile == nullptr)
     {
@@ -122,7 +130,7 @@ int EmpleadoArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen(_nombre,"rb");
+    pFile = fopen(_nombre.c_str(),"rb");
     if(pFile == nullptr)
     {
         return -1;
@@ -147,5 +155,33 @@ int EmpleadoArchivo::getNuevoID()
     {
         return 10;
     }
+
+}
+bool EmpleadoArchivo::guardar(Empleado* registros, int cantidadRegistros)
+{
+    FILE *pFile = nullptr;
+    int resultado = 0;
+    pFile = fopen(_nombre.c_str(), "ab");
+
+    if(pFile == nullptr)
+    {
+        return false;
+    }
+
+    resultado = fwrite(registros,sizeof(Empleado),cantidadRegistros,pFile);
+    fclose(pFile);
+    return resultado == cantidadRegistros;
+}
+
+void EmpleadoArchivo::vaciar()
+{
+    FILE *pFile;
+    pFile = fopen(_nombre.c_str(),"wb");
+    if(pFile == nullptr)
+    {
+        return;
+    }
+
+    fclose(pFile);
 
 }

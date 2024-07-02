@@ -18,11 +18,18 @@ private:
     void listarAreas();
     void mostrarEncabezado();
     void mostrarArea(Area registro);
+
     void modificarNombreArea();
     void bajaArea();
-    void ordenarAreasPorNombre(Area *areas, int cantidad);
+
+    void HacerCopiaSeguridad();
+    void RestaurarCopiaSeguridad();
+
+
 
     AreaArchivo _areaArchivo;
+    ///instacion de objeto para backup y restore
+    AreaArchivo _areaBkp = AreaArchivo("Backup/Areas.bkp");
 };
 
 #endif // AREASMANAGER_H

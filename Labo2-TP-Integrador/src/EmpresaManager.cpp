@@ -19,10 +19,11 @@ void EmpresaManager::menuEmpresa()
         cout << "2- LISTAR TODAS LAS EMPRESAS" << endl;
         cout << "3- MODIFICAR EMPRESA" << endl;
         cout << "4- ELIMINAR EMPRESA" << endl;
-        cout << "5- LISTAR ORDENADOS POR NOMBRE" << endl;
+        cout << "5- BACKUP ARCHIVO EMPRESAS" << endl;
+        cout << "6- RESTAURAR ARCHIVO EMPRESAS" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
-        cout << "Opcion: "<< endl;
+        cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -44,11 +45,14 @@ void EmpresaManager::menuEmpresa()
             system("pause");
             break;
         case 5:
-            //listarEmpresas();
-
-            cout << "Falta desarrollar." <<endl;
+            HacerCopiaSeguridad();
             system("pause");
             break;
+        case 6:
+            RestaurarCopiaSeguridad();
+            system("pause");
+            break;
+
         }
     }
     while(opcion!=0);
@@ -69,7 +73,7 @@ void EmpresaManager::menuModificarEmpresa()
         cout << "2- MODIFICAR CUIT" << endl;
         cout << "--------------------------------------" << endl;
         cout << "0- SALIR" << endl;
-        cout << "Opcion: "<< endl;
+        cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -195,6 +199,7 @@ void EmpresaManager::listarEmpresas()
 
 }
 
+
 Empresa EmpresaManager::crearEmpresa()
 {
     int idEmpresa;
@@ -259,7 +264,58 @@ void EmpresaManager::bajaEmpresa()
     }
 }
 
-void EmpresaManager::ordenarEmpresaPorNombre(Empresa* empresas, int cantidad)
+void EmpresaManager::HacerCopiaSeguridad()
 {
+    system("cls");
+    int cantidad = _empresaArchivo.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Empresa *empresas;
+    empresas = new Empresa[cantidad];
+
+    if(empresas == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _empresaArchivo.leerTodos(empresas,cantidad);
+    _empresaBkp.vaciar();
+    if(_empresaBkp.guardar(empresas,cantidad))
+    {
+        cout << "BACKUP REALIZADO CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO EL BACKUP." << endl;
+    }
+    delete [] empresas;
+}
+
+void EmpresaManager::RestaurarCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _empresaBkp.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Empresa *empresas;
+    empresas = new Empresa[cantidad];
+
+    if(empresas == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _empresaBkp.leerTodos(empresas,cantidad);
+    _empresaArchivo.vaciar();
+    if(_empresaArchivo.guardar(empresas,cantidad))
+    {
+        cout << "RESTAURACION REALIZADA CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO LA RESTAURACION." << endl;
+    }
+    delete [] empresas;
 
 }
+

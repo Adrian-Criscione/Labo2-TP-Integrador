@@ -5,7 +5,15 @@
 
 AreaArchivo::AreaArchivo()
 {
-    strcpy(_nombre, "areas.dat");
+    _nombre = "Datos/areas.dat";
+}
+AreaArchivo::AreaArchivo(std::string nombre)
+{
+    setNombreArchivo(nombre);
+}
+void AreaArchivo::setNombreArchivo(std::string nombre)
+{
+    _nombre = nombre;
 }
 
 bool AreaArchivo::guardar(Area registro)
@@ -13,7 +21,7 @@ bool AreaArchivo::guardar(Area registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "ab");
+    pFile = fopen(_nombre.c_str(), "ab");
 
     if (pFile == nullptr)
     {
@@ -32,7 +40,7 @@ bool AreaArchivo::guardar(int indice, Area registro)
     bool resultado;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb+");
+    pFile = fopen(_nombre.c_str(), "rb+");
 
     if (pFile == nullptr)
     {
@@ -47,13 +55,41 @@ bool AreaArchivo::guardar(int indice, Area registro)
 
     return resultado;
 }
+bool AreaArchivo::guardar(Area* registros, int cantidadRegistros)
+{
+    FILE *pFile = nullptr;
+    int resultado = 0;
+    pFile = fopen(_nombre.c_str(), "ab");
+
+    if(pFile == nullptr)
+    {
+        return false;
+    }
+
+    resultado = fwrite(registros,sizeof(Area),cantidadRegistros,pFile);
+    fclose(pFile);
+    return resultado == cantidadRegistros;
+}
+
+void AreaArchivo::vaciar()
+{
+    FILE *pFile;
+    pFile = fopen(_nombre.c_str(),"wb");
+    if(pFile == nullptr)
+    {
+        return;
+    }
+
+    fclose(pFile);
+
+}
 
 Area AreaArchivo::leer(int indice)
 {
     Area registro;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb");
+    pFile = fopen(_nombre.c_str(), "rb");
 
     if (pFile == nullptr)
     {
@@ -73,7 +109,7 @@ void AreaArchivo::leerTodos(Area registros[], int cantidad)
 {
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb");
+    pFile = fopen(_nombre.c_str(), "rb");
 
     if (pFile == nullptr)
     {
@@ -91,7 +127,7 @@ int AreaArchivo::buscarID(int idArea)
     int pos = 0;
     FILE *pFile = nullptr;
 
-    pFile = fopen(_nombre, "rb");
+    pFile = fopen(_nombre.c_str(), "rb");
 
     if (pFile == nullptr)
     {
@@ -115,7 +151,7 @@ int AreaArchivo::getCantidadRegistros()
 {
     FILE *pFile;
     int tam;
-    pFile = fopen(_nombre, "rb");
+    pFile = fopen(_nombre.c_str(), "rb");
 
     fseek(pFile, 0, SEEK_END);
     tam = ftell(pFile) / sizeof(Area);

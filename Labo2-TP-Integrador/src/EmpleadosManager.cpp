@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+#include <iomanip>
 #include "EmpleadosManager.h"
-
+#include "Area.h"
 using namespace std;
 
 
@@ -21,9 +22,11 @@ void EmpleadosManager::menuEmpleado()
         cout << "3- MODIFICAR EMPLEADO" << endl;
         cout << "4- ELIMINAR EMPLEADO" << endl;
         cout << "5- CONSULTAR EMPLEADO" << endl;
+        cout << "6- BACKUP ARCHIVO AREAS" << endl;
+        cout << "7- RESTORE ARCHIVO AREAS" << endl;
         cout << "-----------------------------" << endl;
         cout << "0- SALIR" << endl;
-        cout << "Opcion: "<< endl;
+        cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -37,7 +40,8 @@ void EmpleadosManager::menuEmpleado()
             system("pause");
             break;
         case 3:
-            menuModificarEmpleado();
+            //menuModificarEmpleado();
+            cout << "Falta desarrollar. Disculpe las molestias." <<endl;
             system("pause");
             break;
         case 4:
@@ -45,9 +49,17 @@ void EmpleadosManager::menuEmpleado()
             system("pause");
             break;
         case 5:
-            //listarEmpresas();
 
-            cout << "Falta desarrollar." <<endl;
+            ///CONSULTAR EMPLEADO
+            cout << "Falta desarrollar. Disculpe las molestias." <<endl;
+            system("pause");
+            break;
+        case 6:
+            HacerCopiaSeguridad();
+            system("pause");
+            break;
+        case 7:
+            RestaurarCopiaSeguridad();
             system("pause");
             break;
         }
@@ -90,28 +102,16 @@ void EmpleadosManager::listarEmpleados()
     }
     _empleadoArchivo.leerTodos(empleados,cantidad);
 
-    for(int i = 0;i<cantidad;i++)
+    mostrarEncabezado();
+
+    for(int i = 0; i<cantidad; i++)
     {
-            cout << "--------------------------------" << endl;
-            mostrarEmpleado(empleados[i]);
-            cout << "--------------------------------" << endl;
+
+        mostrarEmpleado(empleados[i]);
+
     }
 
-delete [] empleados;
-}
-
-void EmpleadosManager::listarEmpleado(Empleado registro)
-{
-    cout << "ID LEGAJO        : " << registro.getIdLegajo() << endl;
-    cout << "APELLIDO         : " << registro.getApellido() << endl;
-    cout << "NOMBRE           : " << registro.getNombre() << endl;
-    cout << "DNI              : " << registro.getDNI() << endl;
-    cout << "AREA             : " << registro.getIdArea() << endl;
-    cout << "HORAS TRABAJADAS : " << registro.getHorasTrabajadas() << endl;
-    cout << "SUELDO           : " << registro.getSueldo() << endl;
-    cout << "FECHA DE ALTA    : " << registro.geFechaContratacion().toString() << endl;
-    cout << "ESTADO           : " << registro.getEstado() << endl;
-
+    delete [] empleados;
 }
 
 Empleado EmpleadosManager::crearEmpleado()
@@ -120,14 +120,12 @@ Empleado EmpleadosManager::crearEmpleado()
     string apellido;
     string dni;
     int dia, mes, anio;
-    //Fecha fechaNacimiento;
-    //Fecha fechaAlta;
+
     int idLegajo;
     int idEmpresa;
     int idArea;
     float horasTrabajadas;
     float sueldo;
-    //Fecha fechaContratacion;
     Fecha fechaBaja;
     bool estado=true;
 
@@ -148,6 +146,16 @@ Empleado EmpleadosManager::crearEmpleado()
     cin >> idEmpresa;
     cout << "Ingrese ID de área: ";
     cin >> idArea;
+
+    ///VALIDACION: existe el idArea cargado en el paso anterior.
+    while(_areaArchivo.buscarID(idArea) == -1)
+    {
+        cout << "ID de Area Incorrecto." << endl;
+        cout << "Ingrese ID de área de nuevo: ";
+        cin >> idArea;
+
+    }
+
     cout << "Ingrese horas trabajadas: ";
     cin >> horasTrabajadas;
     cout << "Ingrese sueldo: ";
@@ -159,19 +167,23 @@ Empleado EmpleadosManager::crearEmpleado()
 
     return Empleado(nombre,apellido,dni,fechaNacimiento,idLegajo,idEmpresa,idArea,horasTrabajadas,sueldo,fechaContratacion,fechaBaja,estado);
 }
-
+void EmpleadosManager::mostrarEncabezado()
+{
+    cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << left << setw(6)  << "ID" << setw(15) << "APELLIDO" << setw(15) << "NOMBRE" << setw(12) << "DNI"
+         << setw(20) << "AREA" << setw(12) << "ALTA"<< setw(10) << "ESTADO"<< endl;
+    cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+}
 
 void EmpleadosManager::mostrarEmpleado(Empleado registro)
 {
-    cout << "ID LEGAJO        : " << registro.getIdLegajo() << endl;
-    cout << "APELLIDO         : " << registro.getApellido() << endl;
-    cout << "NOMBRE           : " << registro.getNombre() << endl;
-    cout << "DNI              : " << registro.getDNI() << endl;
-    cout << "AREA             : " << registro.getIdArea() << endl;
-    cout << "HORAS TRABAJADAS : " << registro.getHorasTrabajadas() << endl;
-    cout << "SUELDO           : " << registro.getSueldo() << endl;
-    cout << "FECHA DE ALTA    : " << registro.geFechaContratacion().toString() << endl;
-    cout << "ESTADO           : " << (registro.getEstado()? "Activo" : "Baja")<< endl;
+    /// para mostrar el nombre del area.
+    int posNombreArea = _areaArchivo.buscarID(registro.getIdArea());
+    Area nombreArea = _areaArchivo.leer(posNombreArea);
+
+    cout << left << setw(6)  << registro.getIdLegajo() << setw(15) << registro.getApellido() << setw(15) << registro.getNombre() << setw(12) << registro.getDNI()
+         << setw(20) << nombreArea.getNombreID() << setw(12) << registro.geFechaContratacion().toString()
+         << setw(10) << (registro.getEstado()? "Activo" : "Baja")<< endl << endl;
 
 }
 
@@ -202,3 +214,58 @@ void EmpleadosManager::bajaEmpleado()
 
 }
 
+
+void EmpleadosManager::HacerCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _empleadoArchivo.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Empleado *empleados;
+    empleados = new Empleado[cantidad];
+
+    if(empleados == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _empleadoArchivo.leerTodos(empleados,cantidad);
+    _empleadoBkp.vaciar();
+    if(_empleadoBkp.guardar(empleados,cantidad))
+    {
+        cout << "BACKUP REALIZADO CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO EL BACKUP." << endl;
+    }
+    delete [] empleados;
+
+}
+
+void EmpleadosManager::RestaurarCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _empleadoBkp.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Empleado *empleados;
+    empleados = new Empleado[cantidad];
+
+    if(empleados == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _empleadoBkp.leerTodos(empleados,cantidad);
+    _empleadoArchivo.vaciar();
+    if(_empleadoArchivo.guardar(empleados,cantidad))
+    {
+        cout << "RESTAURACION REALIZADA CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO LA RESTAURACION." << endl;
+    }
+    delete [] empleados;
+}

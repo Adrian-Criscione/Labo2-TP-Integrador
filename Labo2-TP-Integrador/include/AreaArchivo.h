@@ -6,15 +6,22 @@
 class AreaArchivo
 {
 private:
-    char _nombre[30];
+    std::string _nombre;
 
 public:
     AreaArchivo();
+    AreaArchivo(std::string nombre);
     bool guardar(Area registro);
     bool guardar(int indice, Area registro);
-    Area leer(int indice);
 
+    ///METODOS PARA EL BACKUP Y RESTORE
+    bool guardar(Area *registros, int cantidadRegistros);
+    void vaciar();
     void leerTodos(Area registros[], int cantidad);
+
+    Area leer(int indice);
+    void setNombreArchivo(std::string nombre);
+
 
     int buscarID(int idArea);
 

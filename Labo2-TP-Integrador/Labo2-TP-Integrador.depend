@@ -21,7 +21,7 @@
 1718167184 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
 
-1719714782 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
+1719896513 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
 	<iostream>
 	"AppManager.h"
 	"EmpresaManager.h"
@@ -34,20 +34,20 @@
 	"UsuarioManager.h"
 	"AreasManager.h"
 
-1719720250 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresaarchivo.cpp
+1719894444 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresaarchivo.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
 	"EmpresaArchivo.h"
 
-1719720147 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresaarchivo.h
+1719894742 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresaarchivo.h
 	"Empresa.h"
 
-1719716608 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
+1719894444 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresamanager.h
 	"Empresa.h"
 	"EmpresaArchivo.h"
 
-1719716951 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
+1719894319 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresamanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
@@ -79,55 +79,59 @@
 	"Persona.h"
 	"Fecha.h"
 
-1719720078 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadoarchivo.cpp
+1719895697 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadoarchivo.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
 	"EmpleadoArchivo.h"
 
-1719719609 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadoarchivo.h
+1719895637 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadoarchivo.h
 	"Empleado.h"
 
-1719719440 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
+1719895919 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
 	"Empleado.h"
 	"EmpleadoArchivo.h"
+	"AreaArchivo.h"
 
-1719719112 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
+1719895986 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
 	<iostream>
 	<cstdlib>
+	<iomanip>
 	"EmpleadosManager.h"
+	"Area.h"
 
-1719536143 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\area.cpp
+1719888827 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\area.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
 	"Area.h"
 
-1719536066 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\area.h
+1719888380 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\area.h
 
-1718473557 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areaarchivo.cpp
+1719894873 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areaarchivo.cpp
 	<iostream>
 	<cstdlib>
 	"AreaArchivo.h"
 	<cstring>
 
-1719714782 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\areaarchivo.h
+1719894833 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\areaarchivo.h
 	"Area.h"
 
-1719716326 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areasmanager.cpp
+1719895227 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areasmanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
 	"AreasManager.h"
 
-1719716043 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\areasmanager.h
+1719895019 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\areasmanager.h
 	"Area.h"
 	"AreaArchivo.h"
 
-1719699446 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\usuarioarchivo.cpp
+1719720375 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\usuarioarchivo.cpp
 	<iostream>
 	<cstdlib>
 	<cstdio>
+	<cstring>
 	"UsuarioArchivo.h"
 
 1719720329 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\usuarioarchivo.h
