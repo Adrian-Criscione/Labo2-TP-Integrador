@@ -78,3 +78,11 @@ void Empresa::setEstado(bool estado)
     _estado = estado;
 
 }
+std::string Empresa::getNombreID()
+{
+    return getRazonSocial() + " (" + std::to_string(_idEmpresa) +")";
+}
+std::string Empresa::toString()
+{
+   return std::to_string(_idEmpresa) + ", " + std::string(_razonSocial);
+}

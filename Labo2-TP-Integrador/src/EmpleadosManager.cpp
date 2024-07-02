@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "EmpleadosManager.h"
 #include "Area.h"
+#include "Empresa.h"
 using namespace std;
 
 
@@ -156,22 +157,18 @@ Empleado EmpleadosManager::crearEmpleado()
 
     }
 
-    cout << "Ingrese horas trabajadas: ";
-    cin >> horasTrabajadas;
-    cout << "Ingrese sueldo: ";
-    cin >> sueldo;
     cout << "Ingrese fecha de contratación (dd mm aaaa): ";
     cin >> dia >> mes >> anio;
     Fecha fechaContratacion(dia,mes,anio);
 
 
-    return Empleado(nombre,apellido,dni,fechaNacimiento,idLegajo,idEmpresa,idArea,horasTrabajadas,sueldo,fechaContratacion,fechaBaja,estado);
+    return Empleado(nombre,apellido,dni,fechaNacimiento,idLegajo,idEmpresa,idArea,fechaContratacion,fechaBaja,estado);
 }
 void EmpleadosManager::mostrarEncabezado()
 {
     cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << left << setw(6)  << "ID" << setw(15) << "APELLIDO" << setw(15) << "NOMBRE" << setw(12) << "DNI"
-         << setw(20) << "AREA" << setw(12) << "ALTA"<< setw(10) << "ESTADO"<< endl;
+         << setw(20) << "EMPRESA" << setw(20) << "AREA" << setw(12) << "ALTA"<< setw(10) << "ESTADO"<< endl;
     cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
 }
 
@@ -180,9 +177,11 @@ void EmpleadosManager::mostrarEmpleado(Empleado registro)
     /// para mostrar el nombre del area.
     int posNombreArea = _areaArchivo.buscarID(registro.getIdArea());
     Area nombreArea = _areaArchivo.leer(posNombreArea);
+    int posNombreEmpresa = _empresaArchivo.buscarID(registro.getIdEmpresa());
+    Empresa nombreEmpresa = _empresaArchivo.leer(posNombreEmpresa);
 
     cout << left << setw(6)  << registro.getIdLegajo() << setw(15) << registro.getApellido() << setw(15) << registro.getNombre() << setw(12) << registro.getDNI()
-         << setw(20) << nombreArea.getNombreID() << setw(12) << registro.geFechaContratacion().toString()
+         << setw(20) << nombreEmpresa.getNombreID()<< setw(20) << nombreArea.getNombreID() << setw(12) << registro.geFechaContratacion().toString()
          << setw(10) << (registro.getEstado()? "Activo" : "Baja")<< endl << endl;
 
 }

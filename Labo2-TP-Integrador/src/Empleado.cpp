@@ -11,19 +11,15 @@ Empleado::Empleado() : Persona()
     _idLegajo = 0;
     _idEmpresa = 0;
     _idArea = 0;
-    _horasTrabajadas = 0.0f;
-    _sueldo = 0.0f;
     _fechaContratacion =Fecha();
     _fechaBaja = Fecha();
     _estado = true;
 }
-Empleado::Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento, int idLegajo, int idEmpresa, int idArea, float horasTrabajadas, float sueldo, Fecha fechaContratacion, Fecha fechaBaja, bool estado) : Persona(nombre,apellido, DNI, fechaNacimiento)
+Empleado::Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento, int idLegajo, int idEmpresa, int idArea, Fecha fechaContratacion, Fecha fechaBaja, bool estado) : Persona(nombre,apellido, DNI, fechaNacimiento)
 {
     setIdLegajo(idLegajo);
     setIdEmpresa(idEmpresa);
     setIdArea(idArea);
-    setHorasTrabajadas(horasTrabajadas);
-    setSueldo(sueldo);
     setFechaContratacion(fechaContratacion);
     setFechaBaja(fechaBaja);
     setEstado(estado);
@@ -44,19 +40,6 @@ int Empleado::getIdEmpresa()
 int Empleado::getIdArea()
 {
     return _idArea;
-}
-
-
-float Empleado::getHorasTrabajadas()
-{
-    return _horasTrabajadas;
-
-}
-
-float Empleado::getSueldo()
-{
-    return _sueldo;
-
 }
 
 Fecha Empleado::geFechaContratacion()
@@ -91,19 +74,6 @@ void Empleado::setIdEmpresa(int idEmpresa)
 void Empleado::setIdArea(int idArea)
 {
     _idArea = idArea;
-}
-
-
-void Empleado::setHorasTrabajadas(float horasTrabajadas)
-{
-    _horasTrabajadas = horasTrabajadas;
-
-}
-
-void Empleado::setSueldo(float sueldo)
-{
-    _sueldo = sueldo;
-
 }
 
 void Empleado::setFechaContratacion(Fecha fechaContratacion)

@@ -15,7 +15,8 @@ public:
     std::string getCuit();
     Fecha getFechaAlta();
     bool getEstado();
-
+    std::string getNombreID();
+    std::string toString();
     //SETTERS
     void setIdEmpresa(int idEmpresa);
     void setRazonSocial(std::string razonSocial);

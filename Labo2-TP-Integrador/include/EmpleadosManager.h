@@ -3,6 +3,7 @@
 #include "Empleado.h"
 #include "EmpleadoArchivo.h"
 #include "AreaArchivo.h"
+#include "EmpresaArchivo.h"
 
 class EmpleadosManager
 {
@@ -30,6 +31,7 @@ private:
     EmpleadoArchivo _empleadoArchivo;
     EmpleadoArchivo _empleadoBkp = EmpleadoArchivo("Backup/Empleados.bkp");
     AreaArchivo _areaArchivo;
+    EmpresaArchivo _empresaArchivo;
 };
 
 #endif // EMPLEADOSMANAGER_H

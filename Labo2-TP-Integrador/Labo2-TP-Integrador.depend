@@ -12,13 +12,13 @@
 1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
 	<string>
 
-1718600885 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
+1719897681 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
 	<iostream>
 	<cstdlib>
 	<cstring>
 	"Empresa.h"
 
-1718167184 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
+1719897681 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
 
 1719896513 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
@@ -70,12 +70,12 @@
 1718601443 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\personamanager.h
 	"Persona.h"
 
-1719717819 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleado.cpp
+1719897243 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleado.cpp
 	<iostream>
 	<cstdlib>
 	"Empleado.h"
 
-1719717819 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleado.h
+1719897272 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleado.h
 	"Persona.h"
 	"Fecha.h"
 
@@ -88,17 +88,19 @@
 1719895637 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadoarchivo.h
 	"Empleado.h"
 
-1719895919 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
+1719897825 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
 	"Empleado.h"
 	"EmpleadoArchivo.h"
 	"AreaArchivo.h"
+	"EmpresaArchivo.h"
 
-1719895986 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
+1719897825 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
 	"EmpleadosManager.h"
 	"Area.h"
+	"Empresa.h"
 
 1719888827 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\area.cpp
 	<iostream>
@@ -155,4 +157,12 @@
 1719698647 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\usuariomanager.h
 	"Usuario.h"
 	"UsuarioArchivo.h"
+
+1719897209 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\sueldos.cpp
+	<iostream>
+	<cstdlib>
+	"Sueldos.h"
+
+1719897083 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\sueldos.h
+	"Fecha.h"
 

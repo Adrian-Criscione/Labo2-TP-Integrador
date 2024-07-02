@@ -7,15 +7,13 @@ class Empleado : public Persona
     public:
         ///CONSTRUCTORES
         Empleado();
-        Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento,int idLegado, int idEmpresa, int idArea, float horasTrabajadas, float sueldo, Fecha fechaContratacion, Fecha fechaBaja, bool estado);
+        Empleado(std::string nombre, std::string apellido, std::string DNI, Fecha fechaNacimiento,int idLegado, int idEmpresa, int idArea, Fecha fechaContratacion, Fecha fechaBaja, bool estado);
 
         ///GETTERS
         int getIdLegajo();
         int getIdEmpresa();
         int getIdArea();
 
-        float getHorasTrabajadas();
-        float getSueldo();
         Fecha geFechaContratacion();
         Fecha getFechaBaja();
         bool getEstado();
@@ -25,8 +23,6 @@ class Empleado : public Persona
         void setIdLegajo(int idLegajo);
         void setIdEmpresa(int idEmpresa);
         void setIdArea(int idArea);
-        void setHorasTrabajadas(float horasTrabajadas);
-        void setSueldo(float sueldo);
         void setFechaContratacion(Fecha fechaContratacion);
         void setFechaBaja(Fecha fechaBaja);
         void setEstado(bool estado);
@@ -38,8 +34,8 @@ class Empleado : public Persona
         int _idLegajo;
         int _idEmpresa;
         int _idArea;
-        float _horasTrabajadas;
-        float _sueldo;
+        //float _horasTrabajadas;
+        //float _sueldo;
         Fecha _fechaContratacion;
         Fecha _fechaBaja;
         bool _estado;
