@@ -1,5 +1,6 @@
 #include <iostream>
-using namespace std;
+#include <rlutil.h>
+//using namespace std;
 
 
 #include "AppManager.h"
@@ -12,19 +13,53 @@ void AppManager::menuPrincipal()
     int option;
     do
     {
-        system("cls");
+        ////RLUTIL PRUEBA
+        rlutil::cls(); // Limpiar la pantalla
 
-        cout << "-----------------------------" << endl;
-        cout << "------ MENU PRINCIPAL -------" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1- EMPRESAS " << endl;
-        cout << "2- EMPLEADOS" << endl;
-        cout << "3- AREAS" << endl;
-        cout << "4- REPORTES" << endl;
-        cout << "5- USUARIOS" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU PRINCIPAL";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "                   *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. EMPRESAS" << "              4. REPORTES";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                 *" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "2. EMPLEADOS" << "             5. USUARIOS";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                 *" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. AREAS";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
+
+        //// RLUTIL FIN PRUEBA
+
+
         cin >> option;
 
         switch(option)

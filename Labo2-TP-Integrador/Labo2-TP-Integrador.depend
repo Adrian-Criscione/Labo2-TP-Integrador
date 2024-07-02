@@ -1,15 +1,16 @@
 # depslib dependency file v1.0
-1719620755 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\main.cpp
+1719929705 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\main.cpp
 	<iostream>
 	"AppManager.h"
 	<iomanip>
+	<locale>
 
 1718231235 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\fecha.cpp
 	<iostream>
 	<ctime>
 	"Fecha.h"
 
-1718163615 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
+1719928508 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\fecha.h
 	<string>
 
 1719897681 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empresa.cpp
@@ -21,8 +22,9 @@
 1719897681 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empresa.h
 	"Fecha.h"
 
-1719896513 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
+1719930706 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\appmanager.cpp
 	<iostream>
+	<rlutil.h>
 	"AppManager.h"
 	"EmpresaManager.h"
 	"EmpleadosManager.h"
@@ -165,4 +167,18 @@
 
 1719897083 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\sueldos.h
 	"Fecha.h"
+
+1719929779 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
 

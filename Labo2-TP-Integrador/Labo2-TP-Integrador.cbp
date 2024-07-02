@@ -50,6 +50,7 @@
 		<Unit filename="include/Usuario.h" />
 		<Unit filename="include/UsuarioArchivo.h" />
 		<Unit filename="include/UsuarioManager.h" />
+		<Unit filename="include/rlutil.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AppManager.cpp" />
 		<Unit filename="src/Area.cpp" />
