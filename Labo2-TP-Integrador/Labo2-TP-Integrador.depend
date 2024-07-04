@@ -125,7 +125,7 @@
 1719894833 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\areaarchivo.h
 	"Area.h"
 
-1720061047 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areasmanager.cpp
+1720062124 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\areasmanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
@@ -155,7 +155,7 @@
 	"Usuario.h"
 	<cstring>
 
-1720060917 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\usuariomanager.cpp
+1720061799 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\usuariomanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>

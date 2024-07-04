@@ -227,16 +227,22 @@ Area AreasManager::crearArea()
 }
 void AreasManager::mostrarEncabezado()
 {
-    cout << "------------------------------------------------------------------------------------------------------------" << endl;
-    cout << left << setw(6)  << " ID" << setw(15) << " AREA" << setw(10) << " ESTADO" << endl;
-    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+            rlutil::setColor(rlutil::YELLOW);
+        std::cout << "*********************************************************************" << std::endl;
+        std::cout << "      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << left << setw(6)  << " ID" << setw(20) << " AREA" << setw(10) << " ESTADO" << endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "*********************************************************************" << std::endl;
+
+
 
 }
 void AreasManager::mostrarArea(Area registro)
 {
-    cout << left <<" "
+    cout << left <<"       "
          << setw(6) << registro.getIdArea()
-         << setw(15) << registro.getNombre()
+         << setw(20) << registro.getNombre()
          << setw(10)  << (registro.getEstado() ? "Activo" : "Baja")
          << endl;
 }
