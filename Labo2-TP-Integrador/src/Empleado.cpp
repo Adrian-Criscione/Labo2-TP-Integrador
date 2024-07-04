@@ -42,7 +42,7 @@ int Empleado::getIdArea()
     return _idArea;
 }
 
-Fecha Empleado::geFechaContratacion()
+Fecha Empleado::getFechaContratacion()
 {
     return _fechaContratacion;
 

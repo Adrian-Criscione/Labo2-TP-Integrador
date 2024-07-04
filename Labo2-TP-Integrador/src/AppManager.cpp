@@ -10,6 +10,7 @@
 #include "SueldosManager.h"
 void AppManager::menuPrincipal()
 {
+    rlutil::hidecursor();
     int opcion;
     do
     {

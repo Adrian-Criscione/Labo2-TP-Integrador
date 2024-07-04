@@ -47,8 +47,6 @@ Fecha::Fecha(int dia, int mes, int anio)
             fechaPorDefecto();
         }
     }
-
-
 }
 
 

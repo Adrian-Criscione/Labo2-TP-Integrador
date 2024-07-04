@@ -15,12 +15,17 @@ public:
 private:
     void agregarEmpleado();
     void listarEmpleados();
-    //void listarEmpleado(Empleado registro);
     Empleado crearEmpleado();
 
     void mostrarEncabezado();
     void mostrarEmpleado(Empleado registro);
-    //void modificarNombreNombre();
+
+    void modificarNombre();
+    void modificarApellido();
+    void modificarDNI();
+    void modificarFechaNac();
+    void modificarArea();
+    void modificarFechaContratacion();
 
     void HacerCopiaSeguridad();
     void RestaurarCopiaSeguridad();

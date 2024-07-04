@@ -14,7 +14,7 @@ class Empleado : public Persona
         int getIdEmpresa();
         int getIdArea();
 
-        Fecha geFechaContratacion();
+        Fecha getFechaContratacion();
         Fecha getFechaBaja();
         bool getEstado();
 
@@ -34,8 +34,6 @@ class Empleado : public Persona
     int _idLegajo;
     int _idEmpresa;
     int _idArea;
-    //float _horasTrabajadas;
-    //float _sueldo;
     Fecha _fechaContratacion;
     Fecha _fechaBaja;
     bool _estado;
