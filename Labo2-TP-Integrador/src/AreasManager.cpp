@@ -3,53 +3,55 @@
 #include <iomanip>
 #include <rlutil.h>
 #include "AreasManager.h"
-
+#include "AppManager.h"
 using namespace std;
 
 
 void AreasManager::menuArea()
 {
+    AppManager ap;
     int opcion;
     do
     {
         system("cls");
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
+
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU AREA";
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "                        *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. AGREGAR AREA" << "              4. ELIMINAR AREA";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "        *" << std::endl;
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "2. LISTAR AREAS" << "              5. BACKUP ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "       *" << std::endl;
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "3. MODIFICAR AREA"<< "            6. RESTORE ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "      *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
         cin >> opcion;
 
@@ -86,37 +88,38 @@ void AreasManager::menuArea()
 
 void AreasManager::menuModificarArea()
 {
+    AppManager ap;
     int opcion;
     do
     {
         system("cls");
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU MODIFICAR AREA";
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();ap.setColorLineas();
         std::cout << "              *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. MODIFICAR NOMBRE";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                  *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
         cin >> opcion;
 
@@ -213,26 +216,32 @@ void AreasManager::listarAreas()
 
 Area AreasManager::crearArea()
 {
+    AppManager ap;
     int idArea;
     string nombre;
     bool estado = true;
     idArea = _areaArchivo.getNuevoID();
-    cout << "Ingrese un ID: " << idArea << endl;
 
+    cout << "Ingrese un ID: ";
+    ap.setColorIngresoTexto();
+    cout << idArea << endl;
     cin.ignore();
+    rlutil::setColor(rlutil::CYAN);
     cout << "Ingrese Nombre: ";
+    ap.setColorIngresoTexto();
     getline(cin, nombre);
 
     return Area(idArea, nombre, estado);
 }
 void AreasManager::mostrarEncabezado()
 {
-            rlutil::setColor(rlutil::YELLOW);
+    AppManager ap;
+        ap. setColorLineas();
         std::cout << "*********************************************************************" << std::endl;
         std::cout << "      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         cout << left << setw(6)  << " ID" << setw(20) << " AREA" << setw(10) << " ESTADO" << endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "*********************************************************************" << std::endl;
 
 

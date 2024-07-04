@@ -171,7 +171,7 @@ typedef const char* RLUTIL_STRING_T;
  * YELLOW - Yellow (bright)
  * WHITE - White (bright)
  */
-enum
+enum Color
 {
     BLACK,
     BLUE,

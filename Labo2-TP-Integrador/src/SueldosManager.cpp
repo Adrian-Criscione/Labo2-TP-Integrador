@@ -4,55 +4,57 @@
 #include <rlutil.h>
 #include "SueldosManager.h"
 #include "Empleado.h"
+#include "AppManager.h"
 using namespace std;
 
 
 
 void SueldosManager::menuSueldos()
 {
+    AppManager ap;
     int opcion;
     do
     {
         rlutil::cls(); // Limpiar la pantalla
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU SUELDOS";
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "                     *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. AGREGAR SUELDO" << "              4. ELIMINAR SUELDO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "    *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "2. LISTAR SUELDOS" << "              5. BACKUP ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "     *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "3. MODIFICAR SUELDO" << "            6. RESTORE ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "    *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
 
         cin >> opcion;
@@ -92,37 +94,38 @@ void SueldosManager::menuSueldos()
 
 void SueldosManager::menuModificarSueldos()
 {
+    AppManager ap;
     int opcion;
     do
     {
         rlutil::cls(); // Limpiar la pantalla
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU MODIFICAR SUELDO";
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "            *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. MODIFICAR HORAS EXTRA" << "       2. MODIFICAR SUELDO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "   *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
         cin >> opcion;
 

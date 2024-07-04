@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <rlutil.h>
-
+#include "AppManager.h"
 #include "EmpleadosManager.h"
 #include "Area.h"
 #include "Empresa.h"
@@ -12,55 +12,56 @@ using namespace std;
 
 void EmpleadosManager::menuEmpleado()
 {
+    AppManager ap;
     int opcion;
     do
     {
         rlutil::cls(); // Limpiar la pantalla
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU EMPLEADOS";
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "                   *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. AGREGAR EMPLEADO" << "           5. CONSULTAR EMPLEADO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "  *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "2. LISTAR EMPLEADOS" << "           6. BACKUP ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "      *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "3. MODIFICAR EMPLEADO" << "         7. RESTORE ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "     *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "4. ELIMINAR EMPLEADO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                 *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
         cin >> opcion;
 
@@ -209,24 +210,33 @@ Empleado EmpleadosManager::crearEmpleado()
 }
 void EmpleadosManager::mostrarEncabezado()
 {
-    cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+    AppManager ap;
+    ap.setColorLineas();
+    std::cout << "**************************************************************************************************************" << std::endl;
+
+    ap.setColorNombreMenu();
     cout << left << setw(6)  << "ID" << setw(15) << "APELLIDO" << setw(15) << "NOMBRE" << setw(12) << "DNI"
          << setw(20) << "EMPRESA" << setw(20) << "AREA" << setw(12) << "ALTA"<< setw(10) << "ESTADO"<< endl;
-    cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
+    ap.setColorLineas();
+    std::cout << "**************************************************************************************************************" << std::endl;
 }
 
 void EmpleadosManager::mostrarEmpleado(Empleado registro)
 {
+    AppManager ap;
     /// para mostrar el nombre del area.
+
     int posNombreArea = _areaArchivo.buscarID(registro.getIdArea());
     Area nombreArea = _areaArchivo.leer(posNombreArea);
+    /// para mostrar el nombre de la empresa
     int posNombreEmpresa = _empresaArchivo.buscarID(registro.getIdEmpresa());
     Empresa nombreEmpresa = _empresaArchivo.leer(posNombreEmpresa);
 
+    ap.setColorDatosListados();
     cout << left << setw(6)  << registro.getIdLegajo() << setw(15) << registro.getApellido() << setw(15) << registro.getNombre() << setw(12) << registro.getDNI()
          << setw(20) << nombreEmpresa.getNombreID()<< setw(20) << nombreArea.getNombreID() << setw(12) << registro.geFechaContratacion().toString()
          << setw(10) << (registro.getEstado()? "Activo" : "Baja")<< endl << endl;
-
+    ap.setColorIngresoTexto();
 }
 
 void EmpleadosManager::bajaEmpleado()
@@ -241,8 +251,10 @@ void EmpleadosManager::bajaEmpleado()
     if(posicion >=0)
     {
         registro = _empleadoArchivo.leer(posicion);
+        cout << endl;
+        mostrarEncabezado();
         mostrarEmpleado(registro);
-        cout << "-------------------------" << endl;
+        //cout << "-------------------------" << endl;
         cout << "Desea dar de baja el empleado seleccionado? (1-Si/0-No): ";
         cin >> estado;
         registro.setEstado(!estado);

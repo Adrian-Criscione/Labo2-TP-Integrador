@@ -1,20 +1,34 @@
-#pragma once
-#include <string>
+#ifndef FECHA_H
+#define FECHA_H
+#include <iostream>
+
 
 class Fecha
 {
-private:
-    int _dia, _mes, _anio;
+    public:
+        Fecha();
+        Fecha(int dia, int mes, int anio);
 
-public:
-    Fecha();
-    Fecha(int dia, int mes, int anio);
-    int getDia();
-    int getMes();
-    int getAnio();
-    void setDia(int dia);
-    void setMes(int mes);
-    void setAnio(int anio);
-    std::string toString();
+        //setter
+        int getDia();
+        int getMes();
+        int getAnio();
+
+        void fechaPorDefecto();
+        //void mostrar();
+        std::string toString();
+        bool esBisiesto();
+        //void AgregarDias(int dias);
+        //void prueba();
+
+    private:
+        int _dia;
+        int _mes;
+        int _anio;
+
+        //void AgregarDia();
+        //void RestarDia();
+
 };
 
+#endif // FECHA_H

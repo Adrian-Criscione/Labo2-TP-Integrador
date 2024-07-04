@@ -9,6 +9,13 @@ class AppManager
 {
 public:
     void menuPrincipal();
+    void setColorTexto();
+    void setColorLineas();
+    void setColorIngresoTexto();
+    void setColorNombreMenu();
+    void setColorOpciones();
+    void setColorDatosListados();
+
 private:
     EmpresaManager _em;
     EmpleadosManager _empManager;

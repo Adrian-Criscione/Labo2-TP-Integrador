@@ -26,7 +26,11 @@ private:
     void mostrarEncabezado();
     void mostrarUsuario(Usuario registro);
 
+    void HacerCopiaSeguridad();
+    void RestaurarCopiaSeguridad();
+
     UsuarioArchivo _usuarioArchivo;
+    UsuarioArchivo _usuarioBkp = UsuarioArchivo("Backup/Usuarios.bkp");
 };
 
 #endif // USUARIOMANAGER_H

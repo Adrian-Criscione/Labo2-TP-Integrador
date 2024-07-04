@@ -3,54 +3,56 @@
 #include <iomanip>
 #include <rlutil.h>
 #include "UsuarioManager.h"
+#include "AppManager.h"
 
 using namespace std;
 
 void UsuarioManager::menuUsuario()
 {
+    AppManager ap;
     int opcion;
     do
     {
         rlutil::cls(); // Limpiar la pantalla
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU USUARIO";
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "                     *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. AGREGAR USUARIO" << "              4. BAJA USUSARIO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "     *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "2. LISTAR USUARIOS" << "              5. BACKUP ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "    *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "3. MODIFICAR USUARIO" << "            6. RESTORE ARCHIVO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "   *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
 
         cin >> opcion;
@@ -88,42 +90,43 @@ void UsuarioManager::menuUsuario()
 
 void UsuarioManager::menuModificarUsuario()
 {
+    AppManager ap;
     int opcion;
     do
     {
         rlutil::cls(); // Limpiar la pantalla
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        ap.setColorNombreMenu();
         std::cout << "               MENU MODIFICAR USUARIO";
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "           *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "1. MODIFICAR USUARIO" << "             2. MODIFICAR CLAVE";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "  *" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "3. MODIFICAR NIVEL DE ACCESO";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                         *" << std::endl;
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        ap.setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        ap.setColorIngresoTexto();
         std::cout << "Opcion: ";
         cin >> opcion;
 
@@ -348,16 +351,23 @@ Usuario UsuarioManager::crearUsuario()
 }
 void UsuarioManager::mostrarEncabezado()
 {
-    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    AppManager ap;
+    ap. setColorLineas();
+    std::cout << "******************************************************************************************************" << std::endl;
+    ap.setColorNombreMenu();
     cout << left
          << setw(6)  << " ID" << setw(15) << " APELLIDO" << setw(15) << " NOMBRE"
          << setw(12) << " DNI" << setw(12) << " USUARIO" << setw(12) << " CLAVE"
          << setw(10)  << " ACCESO" << setw(10) << " ESTADO" << endl;
-    cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    ap. setColorLineas();
+    std::cout << "******************************************************************************************************" << std::endl;
+    ap.setColorIngresoTexto();
 }
 
 void UsuarioManager::mostrarUsuario(Usuario registro)
 {
+    AppManager ap;
+    ap.setColorDatosListados();
     cout << left <<" "
          << setw(6) << registro.getIdUsuario()
          << setw(15) << registro.getApellido()
@@ -368,14 +378,59 @@ void UsuarioManager::mostrarUsuario(Usuario registro)
          << setw(10)  << registro.getAccesoNivel()
          << setw(10)  << (registro.getEstado() ? "Activo" : "Baja")
          << endl;
-    /*
-    cout << "ID Usuario: " << registro.getIdUsuario() << endl;
-    cout << "Nombre: " << registro.getNombre() << endl;
-    cout << "Apellido: " << registro.getApellido() << endl;
-    cout << "DNI: " << registro.getDNI() << endl;
-    cout << "Nombre de Usuario: " << registro.getUsuario() << endl;
-    cout << "Clave: " << registro.getClave() << endl;
-    cout << "Nivel de Acceso: " << registro.getAccesoNivel() << endl;
-    cout << "Estado: " << (registro.getEstado() ? "Activo" : "Inactivo") << endl;
-    */
+}
+void UsuarioManager::HacerCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _usuarioArchivo.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Usuario *usuarios;
+    usuarios = new Usuario[cantidad];
+
+    if(usuarios == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _usuarioArchivo.leerTodos(usuarios,cantidad);
+    _usuarioBkp.vaciar();
+    if(_usuarioBkp.guardar(usuarios,cantidad))
+    {
+        cout << "BACKUP REALIZADO CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO EL BACKUP." << endl;
+    }
+    delete [] usuarios;
+
+}
+
+void UsuarioManager::RestaurarCopiaSeguridad()
+{
+    system("cls");
+    int cantidad = _usuarioBkp.getCantidadRegistros();
+
+    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+    Usuario *usuarios;
+    usuarios = new Usuario[cantidad];
+
+    if(usuarios == nullptr)
+    {
+        cout << "No se pudo obtener la memoria solicitada." << endl;
+        return;
+    }
+    _usuarioBkp.leerTodos(usuarios,cantidad);
+    _usuarioArchivo.vaciar();
+    if(_usuarioArchivo.guardar(usuarios,cantidad))
+    {
+        cout << "RESTAURACION REALIZADA CORRECTAMENTE." << endl;
+    }
+    else
+    {
+        cout << "FALLO LA RESTAURACION." << endl;
+    }
+    delete [] usuarios;
+
 }

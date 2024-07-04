@@ -13,53 +13,56 @@ void AppManager::menuPrincipal()
     int opcion;
     do
     {
+        /// PARA QUE TODOS LOS CARACTERES SE IMPRIMAN POR DEFECTO EN BLANCO.
+        setColorIngresoTexto();
         ////RLUTIL PRUEBA
         rlutil::cls(); // Limpiar la pantalla
 
-        rlutil::setColor(rlutil::YELLOW);
+
+        setColorLineas();
         std::cout << "********************************************************" << std::endl;
         std::cout << "*      ";
-        rlutil::setColor(rlutil::LIGHTRED);
+        setColorNombreMenu();
         std::cout << "               MENU PRINCIPAL";
-        rlutil::setColor(rlutil::YELLOW);
+        setColorLineas();
         std::cout << "                   *" << std::endl;
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        setColorIngresoTexto();
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        setColorOpciones();
         std::cout << "1. EMPRESAS" << "              4. REPORTES";
-        rlutil::setColor(rlutil::WHITE);
+        setColorIngresoTexto();
         std::cout << "                 *" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        setColorOpciones();
         std::cout << "2. EMPLEADOS" << "             5. SUELDOS";
-        rlutil::setColor(rlutil::WHITE);
+        setColorIngresoTexto();
         std::cout << "                  *" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        setColorOpciones();
         std::cout << "3. AREAS"<< "                 6. USUARIOS";
-        rlutil::setColor(rlutil::WHITE);
+        setColorIngresoTexto();
         std::cout << "                 *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
         std::cout << "* ";
-        rlutil::setColor(rlutil::LIGHTGREEN);
+        setColorOpciones();
         std::cout << "0. SALIR";
-        rlutil::setColor(rlutil::WHITE);
+        setColorIngresoTexto();
         std::cout << "                                             *" << std::endl;
 
-        rlutil::setColor(rlutil::YELLOW);
+        setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        rlutil::setColor(rlutil::WHITE);
+        setColorTexto();
         std::cout << "Opcion: ";
 
         //// RLUTIL FIN PRUEBA
 
-
+        setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -98,4 +101,28 @@ void AppManager::menuPrincipal()
     }
     while(opcion != 0);
 
+}
+void AppManager::setColorTexto()
+{
+    rlutil::setColor(rlutil::Color::CYAN);
+}
+void AppManager::setColorLineas()
+{
+    rlutil::setColor(rlutil::Color::YELLOW);
+}
+void AppManager::setColorIngresoTexto()
+{
+    rlutil::setColor(rlutil::Color::WHITE);
+}
+void AppManager::setColorNombreMenu()
+{
+    rlutil::setColor(rlutil::Color::LIGHTRED);
+}
+void AppManager::setColorOpciones()
+{
+    rlutil::setColor(rlutil::Color::LIGHTGREEN);
+}
+void AppManager::setColorDatosListados()
+{
+    rlutil::setColor(rlutil::Color::LIGHTCYAN);
 }
