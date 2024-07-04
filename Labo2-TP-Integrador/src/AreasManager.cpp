@@ -51,8 +51,12 @@ void AreasManager::menuArea()
 
         ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
+
+
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -99,7 +103,8 @@ void AreasManager::menuModificarArea()
         std::cout << "*      ";
         ap.setColorNombreMenu();
         std::cout << "               MENU MODIFICAR AREA";
-        ap.setColorLineas();ap.setColorLineas();
+        ap.setColorLineas();
+        ap.setColorLineas();
         std::cout << "              *" << std::endl;
         std::cout << "********************************************************" << std::endl;
         ap.setColorIngresoTexto();
@@ -119,8 +124,10 @@ void AreasManager::menuModificarArea()
 
         ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -136,6 +143,7 @@ void AreasManager::menuModificarArea()
 
 void AreasManager::modificarNombreArea()
 {
+    AppManager ap;
     system("cls");
     Area registro;
     int idArea, posicion;
@@ -147,12 +155,28 @@ void AreasManager::modificarNombreArea()
     if(posicion >= 0)
     {
         registro = _areaArchivo.leer(posicion);
+        mostrarEncabezado();
         mostrarArea(registro);
-        cout << "----------------------------" << endl;
+
 
         string nuevoNombre;
-        cout << "Ingrese el nuevo nombre: ";
-        getline(cin, nuevoNombre);
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese nombre del area: ";
+            ap.setColorIngresoTexto();
+            getline(cin,nuevoNombre);
+            if(!ap.esStringValido(nuevoNombre,false,false,false)) ///false = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+            {
+                ap.setColorError();
+                cout << "Nombre del area incorrecto." << endl;
+                ap.setColorIngresoTexto();
+            }
+        }
+        while(!ap.esStringValido(nuevoNombre,false,false,false));
+
+
+
         registro.setNombre(nuevoNombre);
         _areaArchivo.guardar(posicion, registro);
         cout << "Nombre de área modificado con exito." << endl;
@@ -209,7 +233,7 @@ void AreasManager::listarAreas()
     else
     {
         cout << "No hay usuarios para listar." << endl;
-        return;
+
     }
 
 }
@@ -226,23 +250,40 @@ Area AreasManager::crearArea()
     ap.setColorIngresoTexto();
     cout << idArea << endl;
     cin.ignore();
-    rlutil::setColor(rlutil::CYAN);
+    /*rlutil::setColor(rlutil::CYAN);
     cout << "Ingrese Nombre: ";
     ap.setColorIngresoTexto();
-    getline(cin, nombre);
+    getline(cin, nombre);*/
+
+    ///CARGA NOMBRE DEL AREA
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese nombre del area: ";
+        ap.setColorIngresoTexto();
+        getline(cin,nombre);
+        if(!ap.esStringValido(nombre,false,false,false)) ///false = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+        {
+            ap.setColorError();
+            cout << "Nombre del area incorrecto." << endl;
+            ap.setColorIngresoTexto();
+        }
+    }
+    while(!ap.esStringValido(nombre,false,false,false));
+
 
     return Area(idArea, nombre, estado);
 }
 void AreasManager::mostrarEncabezado()
 {
     AppManager ap;
-        ap. setColorLineas();
-        std::cout << "*********************************************************************" << std::endl;
-        std::cout << "      ";
-        ap.setColorNombreMenu();
-        cout << left << setw(6)  << " ID" << setw(20) << " AREA" << setw(10) << " ESTADO" << endl;
-        ap. setColorLineas();
-        std::cout << "*********************************************************************" << std::endl;
+    ap. setColorLineas();
+    std::cout << "*********************************************************************" << std::endl;
+    std::cout << "      ";
+    ap.setColorNombreMenu();
+    cout << left << setw(6)  << " ID" << setw(20) << " AREA" << setw(10) << " ESTADO" << endl;
+    ap. setColorLineas();
+    std::cout << "*********************************************************************" << std::endl;
 
 
 
@@ -269,6 +310,11 @@ void AreasManager::bajaArea()
     if(posicion >=0)
     {
         registro = _areaArchivo.leer(posicion);
+        if(registro.getEstado()==false)
+        {
+            cout << "El area ya fue dado de baja." << endl;
+            return;
+        }
         mostrarArea(registro);
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el área? (0-Si/1-No) ";

@@ -12,6 +12,7 @@ public:
 
     void menuSueldos();
     void menuModificarSueldos();
+    void menuReportes();
 
 private:
 
@@ -25,6 +26,12 @@ private:
     void bajaSueldo();
     void HacerCopiaSeguridad();
     void RestaurarCopiaSeguridad();
+
+    //REPORTES
+    void ReporteTotalSueldosPorEmpresa();
+    void ReporteHorasExtrasPorEmpleadoYEmpresa();
+    void ReportePersonalDadoDeBajaPorEmpresa();
+    //
 
     SueldosArchivo _sueldosArchivo;
     SueldosArchivo _sueldosBkp = SueldosArchivo("Backup/Sueldos.bkp");

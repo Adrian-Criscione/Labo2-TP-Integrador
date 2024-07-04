@@ -22,6 +22,9 @@ private:
     void bajaEmpresa();
     void HacerCopiaSeguridad();
     void RestaurarCopiaSeguridad();
+    bool esCuitValido(std::string cuit);
+
+
 
     EmpresaArchivo _empresaArchivo;
     EmpresaArchivo _empresaBkp = EmpresaArchivo("Backup/Empresas.bkp");

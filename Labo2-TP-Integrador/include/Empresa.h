@@ -34,7 +34,6 @@ private:
     bool _estado;
 
 
-
 };
 
 #endif // EMPRESA_H

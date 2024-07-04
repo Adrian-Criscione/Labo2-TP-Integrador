@@ -5,6 +5,7 @@
 #include "UsuarioManager.h"
 #include "AreasManager.h"
 #include "SueldosManager.h"
+#include <string>
 class AppManager
 {
 public:
@@ -15,6 +16,8 @@ public:
     void setColorNombreMenu();
     void setColorOpciones();
     void setColorDatosListados();
+    void setColorError();
+    bool esStringValido( std::string& stringCargado, bool permitirEspacios, bool permitirNumeros, bool permitirCaracteresEspeciales);
 
 private:
     EmpresaManager _em;

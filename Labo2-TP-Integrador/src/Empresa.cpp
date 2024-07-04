@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include <cctype> // Para la función isdigit
 #include "Empresa.h"
 //using namespace std;
 
@@ -63,7 +64,9 @@ void Empresa::setRazonSocial(std::string razonSocial)
 
 void Empresa::setCuit(std::string cuit)
 {
+
     strcpy(_cuit,cuit.c_str());
+
 
 }
 
@@ -86,3 +89,4 @@ std::string Empresa::toString()
 {
     return std::to_string(_idEmpresa) + ", " + std::string(_razonSocial);
 }
+

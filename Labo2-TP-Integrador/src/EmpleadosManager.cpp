@@ -61,8 +61,10 @@ void EmpleadosManager::menuEmpleado()
 
         ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -155,8 +157,10 @@ void EmpleadosManager::menuModificarEmpleado()
 
         ap.setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -209,30 +213,39 @@ void EmpleadosManager::listarEmpleados()
     system("cls");
     int cantidad = _empleadoArchivo.getCantidadRegistros();
     ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
-    Empleado *empleados;
-    empleados = new Empleado[cantidad];
+    if(cantidad >0)
 
-    if(empleados == nullptr)
     {
-        cout << "No se pudo obtener la memoria solicitada." << endl;
-        return;
+        Empleado *empleados;
+        empleados = new Empleado[cantidad];
+
+        if(empleados == nullptr)
+        {
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
+        }
+        _empleadoArchivo.leerTodos(empleados,cantidad);
+
+        mostrarEncabezado();
+
+        for(int i = 0; i<cantidad; i++)
+        {
+
+            mostrarEmpleado(empleados[i]);
+
+        }
+
+        delete [] empleados;
     }
-    _empleadoArchivo.leerTodos(empleados,cantidad);
-
-    mostrarEncabezado();
-
-    for(int i = 0; i<cantidad; i++)
+    else
     {
-
-        mostrarEmpleado(empleados[i]);
-
+        cout << "No hay registros para listar." << endl;
     }
-
-    delete [] empleados;
 }
 
 Empleado EmpleadosManager::crearEmpleado()
 {
+    AppManager ap;
     string nombre;
     string apellido;
     string dni;
@@ -248,31 +261,99 @@ Empleado EmpleadosManager::crearEmpleado()
     idLegajo = _empleadoArchivo.getNuevoID();
     cin.ignore();
 
-    cout << "Ingrese ID de legajo: " << idLegajo << endl;
-    cout << "Ingrese nombre: ";
-    getline(cin, nombre);
-    cout << "Ingrese apellido: ";
-    getline(cin, apellido);
-    cout << "Ingrese DNI: ";
-    getline(cin, dni);
+    ap.setColorTexto();
+    cout << "Ingrese ID de legajo: ";
+    ap.setColorIngresoTexto();
+    cout << idLegajo << endl;
+
+    ///CARGA NOIMBRE EMPLEADO
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese nombre: ";
+        ap.setColorIngresoTexto();
+        getline(cin,nombre);
+        if(!ap.esStringValido(nombre,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+        {
+            ap.setColorError();
+            cout << "El Nombre ingresado es incorrecto." << endl;
+            ap.setColorIngresoTexto();
+        }
+    }
+    while(!ap.esStringValido(nombre,true,false,false));
+
+    ///CARGA APELLIDO EMPLEADO
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese Apellido: ";
+        ap.setColorIngresoTexto();
+        getline(cin,apellido);
+        if(!ap.esStringValido(apellido,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+        {
+            ap.setColorError();
+            cout << "El Apellido ingresado es incorrecto." << endl;
+            ap.setColorIngresoTexto();
+        }
+    }
+    while(!ap.esStringValido(apellido,true,false,false));
+
+    ///CARGA DNI
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese DNI: ";
+        ap.setColorIngresoTexto();
+        getline(cin,dni);
+
+        if(!ap.esStringValido(dni,false,true,false)) ///false = no permitir espacios / true = permitir numeros / false = no permitir caracteres especiales
+        {
+            ap.setColorError();
+            cout << "El DNI ingresado es incorrecto." << endl;
+            ap.setColorIngresoTexto();
+        }
+    }
+    while(!ap.esStringValido(dni,false,true,false));
+
+    ap.setColorTexto();
     cout << "Ingrese fecha de nacimiento (dd mm aaaa): ";
+    ap.setColorIngresoTexto();
     cin >> dia >> mes >> anio;
     Fecha fechaNacimiento(dia,mes,anio);
+
+    ap.setColorTexto();
     cout << "Ingrese ID de empresa: ";
+    ap.setColorIngresoTexto();
     cin >> idEmpresa;
+
+    ///VALIDACION: existe el idEmresa cargado en el paso anterior.
+    while(_empresaArchivo.buscarID(idEmpresa) == -1)
+    {
+        ap.setColorError();
+        cout << "ID de empresa Incorrecto." << endl;
+        ap.setColorTexto();
+        cout << "Ingrese ID de empresa de nuevo: ";
+        ap.setColorIngresoTexto();
+        cin >> idEmpresa;
+    }
+    ap.setColorTexto();
     cout << "Ingrese ID de área: ";
+    ap.setColorIngresoTexto();
     cin >> idArea;
 
     ///VALIDACION: existe el idArea cargado en el paso anterior.
     while(_areaArchivo.buscarID(idArea) == -1)
     {
+        ap.setColorError();
         cout << "ID de Area Incorrecto." << endl;
+        ap.setColorTexto();
         cout << "Ingrese ID de área de nuevo: ";
+        ap.setColorIngresoTexto();
         cin >> idArea;
-
     }
-
+    ap.setColorTexto();
     cout << "Ingrese fecha de contratación (dd mm aaaa): ";
+    ap.setColorIngresoTexto();
     cin >> dia >> mes >> anio;
     Fecha fechaContratacion(dia,mes,anio);
 
@@ -284,7 +365,6 @@ void EmpleadosManager::mostrarEncabezado()
     AppManager ap;
     ap.setColorLineas();
     std::cout << "********************************************************************************************************************" << std::endl;
-
     ap.setColorNombreMenu();
     cout << left << setw(6)  << "ID" << setw(15) << "APELLIDO" << setw(15) << "NOMBRE" << setw(12) << "DNI"
          << setw(25) << "EMPRESA" << setw(25) << "AREA" << setw(12) << "ALTA"<< setw(10) << "ESTADO"<< endl;
@@ -310,6 +390,36 @@ void EmpleadosManager::mostrarEmpleado(Empleado registro)
     ap.setColorIngresoTexto();
 }
 
+void EmpleadosManager::mostrarEncabezadoBaja()
+{
+    AppManager ap;
+    ap.setColorLineas();
+    std::cout << "********************************************************************************************************************" << std::endl;
+    ap.setColorNombreMenu();
+    cout << left << setw(6)  << "ID" << setw(15) << "APELLIDO" << setw(15) << "NOMBRE" << setw(12) << "DNI"
+         << setw(25) << "EMPRESA" << setw(25) << "AREA" << setw(12) << "BAJA"<< setw(10) << "ESTADO"<< endl;
+    ap.setColorLineas();
+    std::cout << "********************************************************************************************************************" << std::endl;
+}
+
+void EmpleadosManager::mostrarEmpleadoBaja(Empleado registro)
+{
+    AppManager ap;
+    /// para mostrar el nombre del area.
+
+    int posNombreArea = _areaArchivo.buscarID(registro.getIdArea());
+    Area nombreArea = _areaArchivo.leer(posNombreArea);
+    /// para mostrar el nombre de la empresa
+    int posNombreEmpresa = _empresaArchivo.buscarID(registro.getIdEmpresa());
+    Empresa nombreEmpresa = _empresaArchivo.leer(posNombreEmpresa);
+
+    ap.setColorDatosListados();
+    cout << left << setw(6)  << registro.getIdLegajo() << setw(15) << registro.getApellido() << setw(15) << registro.getNombre() << setw(12) << registro.getDNI()
+         << setw(25) << nombreEmpresa.getNombreID()<< setw(25) << nombreArea.getNombreID() << setw(12) << registro.getFechaBaja().toString()
+         << setw(10) << (registro.getEstado()? "Activo" : "Baja")<< endl << endl;
+    ap.setColorIngresoTexto();
+}
+
 void EmpleadosManager::bajaEmpleado()
 {
     AppManager ap;
@@ -323,6 +433,13 @@ void EmpleadosManager::bajaEmpleado()
     if(posicion >=0)
     {
         registro = _empleadoArchivo.leer(posicion);
+         if(registro.getEstado()==false)
+        {
+           cout << "El empleado ya fue dado de baja." << endl;
+           return;
+        }
+
+
         cout << endl;
         mostrarEncabezado();
         mostrarEmpleado(registro);
@@ -330,6 +447,7 @@ void EmpleadosManager::bajaEmpleado()
         cout << "Desea dar de baja el empleado seleccionado? (1-Si/0-No): ";
         cin >> estado;
         registro.setEstado(!estado);
+        registro.getFechaBaja().fechaPorDefecto();
         _empleadoArchivo.guardar(posicion,registro);
         ap.setColorLineas();
         std::cout << "**************************************************************************************************************" << std::endl;
@@ -360,9 +478,24 @@ void EmpleadosManager::modificarNombre()
         cout << endl;
         mostrarEncabezado();
         mostrarEmpleado(registro);
-        //cout << "-------------------------" << endl;
-        cout << "Ingrese el nuevo nombre: ";
-        getline(cin,nombreNuevo);
+
+        ///CARGA NOIMBRE EMPLEADO
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese el nuevo nombre: ";
+            ap.setColorIngresoTexto();
+            getline(cin,nombreNuevo);
+
+            if(!ap.esStringValido(nombreNuevo,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+            {
+                ap.setColorError();
+                cout << "El Nombre ingresado es incorrecto." << endl;
+                ap.setColorIngresoTexto();
+            }
+        }
+        while(!ap.esStringValido(nombreNuevo,true,false,false));
+
         registro.setNombre(nombreNuevo);
         _empleadoArchivo.guardar(posicion,registro);
 
@@ -399,8 +532,23 @@ void EmpleadosManager::modificarApellido()
         mostrarEmpleado(registro);
 
         string apellidoAnterior = registro.getApellido();
-        cout << "Ingrese el nuevo apellido: ";
-        getline(cin,apellidoNuevo);
+
+        ///CARGA APELLIDO EMPLEADO
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese el nuevo apellido: ";
+            ap.setColorIngresoTexto();
+            getline(cin,apellidoNuevo);
+            if(!ap.esStringValido(apellidoNuevo,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+            {
+                ap.setColorError();
+                cout << "El Apellido ingresado es incorrecto." << endl;
+                ap.setColorIngresoTexto();
+            }
+        }
+        while(!ap.esStringValido(apellidoNuevo,true,false,false));
+
         registro.setApellido(apellidoNuevo);
         _empleadoArchivo.guardar(posicion,registro);
 
@@ -436,8 +584,24 @@ void EmpleadosManager::modificarDNI()
         mostrarEncabezado();
         mostrarEmpleado(registro);
 
-        cout << "Ingrese el nuevo DNI: ";
-        getline(cin,dniNuevo);
+        ///CARGA DNI
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese DNI: ";
+            ap.setColorIngresoTexto();
+            getline(cin,dniNuevo);
+
+            if(!ap.esStringValido(dniNuevo,false,true,false)) ///false = no permitir espacios / true = permitir numeros / false = no permitir caracteres especiales
+            {
+                ap.setColorError();
+                cout << "El DNI ingresado es incorrecto." << endl;
+                ap.setColorIngresoTexto();
+            }
+        }
+        while(!ap.esStringValido(dniNuevo,false,true,false));
+
+
         registro.setDNI(dniNuevo);
         _empleadoArchivo.guardar(posicion,registro);
 

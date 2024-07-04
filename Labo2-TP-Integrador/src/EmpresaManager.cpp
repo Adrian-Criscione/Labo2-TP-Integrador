@@ -149,6 +149,7 @@ void EmpresaManager::menuModificarEmpresa()
 
 void EmpresaManager::modificarNombreEmpresa()
 {
+    AppManager ap;
     system("cls");
     Empresa registro;
     int idEmpresa, posicion;
@@ -164,8 +165,22 @@ void EmpresaManager::modificarNombreEmpresa()
         cout << "----------------------------" << endl;
 
         string nuevoNombre;
-        cout << "Ingrese la nueva razon social: ";
-        getline(cin,nuevoNombre);
+        ///CARGA RAZON SOCIAL
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese Razon Social: ";
+            ap.setColorIngresoTexto();
+            getline(cin,nuevoNombre);
+            if(!ap.esStringValido(nuevoNombre,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+            {
+                ap.setColorError();
+                cout << "Razon social incorrecta." << endl;
+                ap.setColorIngresoTexto();
+            }
+        }
+        while(!ap.esStringValido(nuevoNombre,true,false,false));
+
         registro.setRazonSocial(nuevoNombre);
         _empresaArchivo.guardar(posicion,registro);
         cout << "Razon social modificada con exito." << endl;
@@ -179,10 +194,13 @@ void EmpresaManager::modificarNombreEmpresa()
 
 void EmpresaManager::modificarCuitEmpresa()
 {
-    system("cls");
+    //system("cls");
+    AppManager ap;
     Empresa registro;
     int idEmpresa, posicion;
+    ap.setColorTexto();
     cout << "Ingrese un ID de Empresa a buscar: ";
+    ap.setColorIngresoTexto();
     cin >> idEmpresa;
     cin.ignore();
     posicion = _empresaArchivo.buscarID(idEmpresa);
@@ -194,8 +212,25 @@ void EmpresaManager::modificarCuitEmpresa()
         cout << "----------------------------" << endl;
 
         string nuevoCuit;
-        cout << "Ingrese el nuevo CUIT de la empresa: ";
-        getline(cin,nuevoCuit);
+
+        ///CARGA DEL CUIT
+        do
+        {
+            ap.setColorTexto();
+            cout << "Ingrese el CUIT: ";
+            ap.setColorIngresoTexto();
+            getline(cin,nuevoCuit);
+            if(!esCuitValido(nuevoCuit))
+            {
+                ap.setColorError();
+                cout << "Cuit incorrecto." << endl;
+                ap.setColorIngresoTexto();
+
+            }
+        }
+        while(!esCuitValido(nuevoCuit));
+
+
         registro.setCuit(nuevoCuit);
         _empresaArchivo.guardar(posicion,registro);
         cout << "CUIT de empresa "<< registro.getRazonSocial() <<" modificada con exito." << endl;
@@ -228,36 +263,43 @@ void EmpresaManager::listarEmpresas()
 
     system("cls");
     int cantidad = _empresaArchivo.getCantidadRegistros();
-
-    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
-    Empresa *empresas;
-    empresas = new Empresa[cantidad];
-
-    if(empresas == nullptr)
+    if(cantidad >0)
     {
-        cout << "No se pudo obtener la memoria solicitada." << endl;
-        return;
-    }
-    _empresaArchivo.leerTodos(empresas,cantidad);
+        ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+        Empresa *empresas;
+        empresas = new Empresa[cantidad];
 
-    mostrarEncabezado();
-    for(int i = 0; i<cantidad; i++)
-    {
-        if(empresas[i].getEstado())
+        if(empresas == nullptr)
         {
-
-            mostrarEmpresa(empresas[i]);
-
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
         }
-    }
-    cout << endl;
-    delete [] empresas;
+        _empresaArchivo.leerTodos(empresas,cantidad);
 
+        mostrarEncabezado();
+        for(int i = 0; i<cantidad; i++)
+        {
+            if(empresas[i].getEstado())
+            {
+
+                mostrarEmpresa(empresas[i]);
+
+            }
+        }
+        cout << endl;
+        delete [] empresas;
+
+    }
+    else
+    {
+        cout << "No hay registros para listar." << endl;
+    }
 }
 
 
 Empresa EmpresaManager::crearEmpresa()
 {
+    AppManager ap;
     int idEmpresa;
     string razonSocial;
     string cuit;
@@ -265,14 +307,46 @@ Empresa EmpresaManager::crearEmpresa()
 
 
     idEmpresa = _empresaArchivo.getNuevoID();
-    cout << "Ingrese un ID: " << idEmpresa << endl;
-
+    cout << endl;
+    ap.setColorTexto();
+    cout << "Ingrese un ID: ";
+    ap.setColorIngresoTexto();
+    cout << idEmpresa << endl;
     cin.ignore();
-    cout << "Ingrese Razon Social: ";
-    getline(cin,razonSocial);
 
-    cout << "Ingrese el CUIT: ";
-    getline(cin,cuit);
+    ///CARGA RAZON SOCIAL
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese Razon Social: ";
+        ap.setColorIngresoTexto();
+        getline(cin,razonSocial);
+        if(!ap.esStringValido(razonSocial,true,false,false)) ///true = permitir espacios / false = no permitir numeros / false = no permitir caracteres especiales
+        {
+            ap.setColorError();
+            cout << "Razon social incorrecta." << endl;
+            ap.setColorIngresoTexto();
+        }
+    }
+    while(!ap.esStringValido(razonSocial,true,false,false));
+
+    ///CARGA DEL CUIT
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese el CUIT: ";
+        ap.setColorIngresoTexto();
+        getline(cin,cuit);
+        if(!esCuitValido(cuit))
+        {
+            ap.setColorError();
+            cout << "Cuit incorrecto." << endl;
+            ap.setColorIngresoTexto();
+
+        }
+    }
+    while(!esCuitValido(cuit));
+
 
     return Empresa(idEmpresa,razonSocial,cuit,fechaAlta,true);
 
@@ -280,10 +354,14 @@ Empresa EmpresaManager::crearEmpresa()
 
 void EmpresaManager::mostrarEncabezado()
 {
+    AppManager ap;
 
+    ap.setColorLineas();
     cout << "------------------------------------------------------------------------------------------------------------" << endl;
+    ap.setColorNombreMenu();
     cout << left << setw(6)  << "ID" << setw(30) << "RAZON SOCIAL" << setw(15) << "CUIT"
          << setw(12) << "FECHA ALTA" << setw(10) << "ESTADO"<< endl;
+    ap.setColorLineas();
     cout << "------------------------------------------------------------------------------------------------------------" << endl;
 }
 void EmpresaManager::mostrarEmpresa(Empresa registro)
@@ -301,22 +379,33 @@ void EmpresaManager::bajaEmpresa()
     int idEmpresa, posicion;
     cout << "Ingrese el ID a buscar: ";
     cin >> idEmpresa;
-
+    cout << endl;
     posicion = _empresaArchivo.buscarID(idEmpresa);
     if(posicion >=0)
     {
         registro = _empresaArchivo.leer(posicion);
+        if(registro.getEstado()==false)
+        {
+           cout << "La empresa ya fue dada de baja." << endl;
+           return;
+        }
+        mostrarEncabezado();
         mostrarEmpresa(registro);
-        cout << "-------------------------" << endl;
-        cout << "Desea dar de baja la empresa? (0-Si/1-No) ";
+
+        cout << "Desea dar de baja la empresa? (1-Si/0-No) ";
         cin >> estado;
-        registro.setEstado(estado);
+        if(estado == false)
+        {
+            return;
+        }
+
+        registro.setEstado(!estado);
         _empresaArchivo.guardar(posicion,registro);
         cout << "La Empresa " << registro.getRazonSocial() << " se ha dado de baja." << endl;
     }
     else
     {
-        cout << "No existe una empresa con ID " << idEmpresa << endl;
+        cout << "No existe una empresa con ID. " << idEmpresa << endl;
     }
 }
 
@@ -374,4 +463,26 @@ void EmpresaManager::RestaurarCopiaSeguridad()
     delete [] empresas;
 
 }
+
+///VALIDACION DE CUIT
+bool EmpresaManager::esCuitValido(std::string cuit)
+{
+    int i;
+    int cantidad = cuit.length();
+    if (cantidad != 11)
+    {
+        return false; // El CUIT debe tener 11 dígitos
+    }
+
+    for (i = 0; i < cantidad; ++i)
+    {
+        if (!isdigit(cuit[i]))
+        {
+            return false; // Si algún carácter no es un dígito, el CUIT no es válido
+        }
+    }
+
+    return true; // Todos los caracteres son dígitos y la longitud es correcta
+}
+
 

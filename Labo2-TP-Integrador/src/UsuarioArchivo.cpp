@@ -6,7 +6,7 @@
 
 UsuarioArchivo::UsuarioArchivo()
 {
-     _nombre = "Datos/Usuarios.dat";
+    _nombre = "Datos/Usuarios.dat";
 }
 UsuarioArchivo::UsuarioArchivo(std::string nombre)
 {

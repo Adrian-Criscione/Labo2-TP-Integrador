@@ -5,6 +5,9 @@
 #include "SueldosManager.h"
 #include "Empleado.h"
 #include "AppManager.h"
+#include "EmpresaArchivo.h"
+#include "EmpleadoArchivo.h"
+#include "EmpleadosManager.h"
 using namespace std;
 
 
@@ -12,6 +15,7 @@ using namespace std;
 void SueldosManager::menuSueldos()
 {
     AppManager ap;
+
     int opcion;
     do
     {
@@ -43,6 +47,7 @@ void SueldosManager::menuSueldos()
         std::cout << "3. MODIFICAR SUELDO" << "            6. RESTORE ARCHIVO";
         ap.setColorIngresoTexto();
         std::cout << "    *" << std::endl;
+
         ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
 
@@ -54,9 +59,12 @@ void SueldosManager::menuSueldos()
 
         ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
 
+
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)
@@ -85,7 +93,10 @@ void SueldosManager::menuSueldos()
             RestaurarCopiaSeguridad();
             system("pause");
             break;
-
+        case 7:
+            menuReportes();
+            system("pause");
+            break;
         }
     }
     while(opcion!=0);
@@ -144,6 +155,72 @@ void SueldosManager::menuModificarSueldos()
     while(opcion!=0);
 
 }
+void SueldosManager::menuReportes()
+{
+    AppManager ap;
+    int opcion;
+    do
+    {
+        rlutil::cls(); // Limpiar la pantalla
+
+        ap. setColorLineas();
+        std::cout << "*********************************************************************" << std::endl;
+        std::cout << "*      ";
+        ap.setColorNombreMenu();
+        std::cout << "               MENU REPORTES";
+        ap. setColorLineas();
+        std::cout << "                                 *" << std::endl;
+        std::cout << "*********************************************************************" << std::endl;
+        ap.setColorIngresoTexto();
+        std::cout << "* ";
+        ap.setColorOpciones();
+        std::cout << "1. SUELDO ANUAL POR EMPRESA" << "           3. PERSONAL DADO DE BAJA";
+        ap.setColorIngresoTexto();
+        std::cout << "    *" << std::endl;
+        ap.setColorIngresoTexto();
+        std::cout << "* ";
+        ap.setColorOpciones();
+        std::cout << "2. CANTIDAD HORAS EXTRA POR SECTOR";
+        ap.setColorIngresoTexto();
+        std::cout << "                                *" << std::endl;
+        ap. setColorLineas();
+        std::cout << "*********************************************************************" << std::endl;
+
+        std::cout << "* ";
+        ap.setColorOpciones();
+        std::cout << "0. SALIR";
+        ap.setColorIngresoTexto();
+        std::cout << "                                                          *" << std::endl;
+
+        ap. setColorLineas();
+        std::cout << "*********************************************************************" << std::endl;
+        ap.setColorIngresoTexto();
+        std::cout << "Opcion: ";
+        cin >> opcion;
+
+        switch(opcion)
+        {
+        case 1:
+
+            //1. REPORTE ANUAL POR EMPRESA
+            ReporteTotalSueldosPorEmpresa();
+
+            break;
+        case 2:
+            //2. CANTIDAD HORAS EXTRA POR SECTOR
+            ReporteHorasExtrasPorEmpleadoYEmpresa();
+
+            break;
+        case 3:
+            //3. PERSONAL DADO DE BAJA
+            ReportePersonalDadoDeBajaPorEmpresa();
+
+            break;
+        }
+    }
+    while(opcion!=0);
+
+}
 
 void SueldosManager::agregarSueldo()
 {
@@ -160,24 +237,66 @@ void SueldosManager::agregarSueldo()
 
 Sueldos SueldosManager::crearSueldo()
 {
+    AppManager ap;
+    Empleado registro;
+    int posicion;
     int idSueldo;
     int idLegajo;
     int idEmpresa;
     float horasExtra;
     float sueldo;
     int dia, mes, anio;
-    Fecha fechaLiquidacion;
+
 
 
     idSueldo = _sueldosArchivo.getNuevoID();
     cout << "Ingrese un ID: " << idSueldo << endl;
     cin.ignore();
-    cout << "Ingrese el ID de legajo; ";
-    cin >> idLegajo;
-    cin.ignore();
+
+    ///VALIDAR QUE EL ID DE LEGAJO NO ESTE DADO DE BAJA
+    do{
+       cout << "Ingrese el ID de legajo; ";
+        cin >> idLegajo;
+        cin.ignore();
+
+        posicion = _empleadoArchivo.buscarID(idLegajo);
+        registro = _empleadoArchivo.leer(posicion);
+         if(registro.getEstado()==false)
+         {
+             cout << "El Empleado está dado de baja." << endl;
+         }
+    }while(registro.getEstado()==false);
+
+    ///VALIDACION: existe el idLegfa cargado en el paso anterior.
+    while(posicion == -1)
+    {
+        ap.setColorError();
+        cout << "ID de Legajo Incorrecto." << endl;
+        ap.setColorTexto();
+        cout << "Ingrese ID de Legajo de nuevo: ";
+        ap.setColorIngresoTexto();
+        cin >> idLegajo;
+    }
+
     cout << "Ingrese el ID de empresa; ";
     cin >> idEmpresa;
     cin.ignore();
+
+    ///TODO: VALIDAR LA EMPRESA CON EL EMPLEADO
+
+
+
+    ///VALIDACION: existe el idEmresa cargado en el paso anterior.
+    while(_empresaArchivo.buscarID(idEmpresa) == -1)
+    {
+        ap.setColorError();
+        cout << "ID de empresa Incorrecto." << endl;
+        ap.setColorTexto();
+        cout << "Ingrese ID de empresa de nuevo: ";
+        ap.setColorIngresoTexto();
+        cin >> idEmpresa;
+    }
+
     cout << "Ingrese día: ";
     cin >> dia;
     cout << "Ingrese el mes: ";
@@ -188,7 +307,7 @@ Sueldos SueldosManager::crearSueldo()
     cin >> horasExtra;
     cout << "Ingrese el sueldo: ";
     cin >> sueldo;
-
+    Fecha fechaLiquidacion(dia,mes,anio);
     return Sueldos(idSueldo,idLegajo,idEmpresa,fechaLiquidacion,horasExtra,sueldo,true);
 
 }
@@ -198,30 +317,36 @@ void SueldosManager::listarSueldos()
 {
     system("cls");
     int cantidad = _sueldosArchivo.getCantidadRegistros();
-
-    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
-    Sueldos *sueldosVec;
-    sueldosVec = new Sueldos[cantidad];
-
-    if(sueldosVec == nullptr)
+    if(cantidad>0)
     {
-        cout << "No se pudo obtener la memoria solicitada." << endl;
-        return;
-    }
-    _sueldosArchivo.leerTodos(sueldosVec,cantidad);
+        ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+        Sueldos *sueldosVec;
+        sueldosVec = new Sueldos[cantidad];
 
-    mostrarEncabezado();
-    for(int i = 0; i<cantidad; i++)
-    {
-        if(sueldosVec[i].getEstado())
+        if(sueldosVec == nullptr)
         {
-
-            mostrarSueldos(sueldosVec[i]);
-
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
         }
+        _sueldosArchivo.leerTodos(sueldosVec,cantidad);
+
+        mostrarEncabezado();
+        for(int i = 0; i<cantidad; i++)
+        {
+            if(sueldosVec[i].getEstado())
+            {
+
+                mostrarSueldos(sueldosVec[i]);
+
+            }
+        }
+        cout << endl;
+        delete [] sueldosVec;
     }
-    cout << endl;
-    delete [] sueldosVec;
+    else
+    {
+        cout << "No hay registros para listar." << endl;
+    }
 
 }
 
@@ -326,6 +451,11 @@ void SueldosManager::bajaSueldo()
     if(posicion >=0)
     {
         registro = _sueldosArchivo.leer(posicion);
+        if(registro.getEstado()==false)
+        {
+           cout << "El registro ya fue dado de baja." << endl;
+           return;
+        }
         mostrarSueldos(registro);
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el sueldo? (1-Si/0-No) ";
@@ -396,4 +526,226 @@ void SueldosManager::RestaurarCopiaSeguridad()
     delete [] sueldosVec;
 
 }
+/// REPORTES
+////////////////////////////////
+// SUELDOS PAGADOS POR AÑO
 
+void SueldosManager::ReporteTotalSueldosPorEmpresa()
+{
+    int idEmpresa;
+    int anio;
+
+    cout << "Ingrese el id de la empresa: ";
+    cin >> idEmpresa;
+    cout << "Ingrese el año: ";
+    cin >> anio;
+
+    float totalSueldosPorMes[12] = {0.0f};
+    int cantidad = _sueldosArchivo.getCantidadRegistros();
+    int mes;
+
+    for (int i = 0; i < cantidad; ++i)
+    {
+        Sueldos sueldo = _sueldosArchivo.leer(i);
+
+
+        if (sueldo.getIdEmpresa() == idEmpresa && sueldo.getFechaLiquidacion().getAnio() == anio && sueldo.getEstado())
+        {
+            mes = sueldo.getFechaLiquidacion().getMes() - 1; // Restamos 1 para ajustar el índice del arreglo (0-11)
+            totalSueldosPorMes[mes] += sueldo.getSueldo();
+        }
+    }
+
+    rlutil::cls();
+    std::cout << "Total de sueldos pagados por la empresa con ID " << idEmpresa << " en el año " << anio << " por mes:" << std::endl;
+    std::cout << "Mes\tTotal Sueldos" << std::endl;
+
+
+    for (int mes = 0; mes < 12; ++mes)
+    {
+        std::cout << (mes + 1) << "\t$" << totalSueldosPorMes[mes] << std::endl;
+    }
+
+    system("pause");
+}
+
+///HORAS EXTRAS DEL EMPLEADO
+
+void SueldosManager::ReporteHorasExtrasPorEmpleadoYEmpresa()
+{
+    rlutil::cls();
+
+    int cantidadSueldos = _sueldosArchivo.getCantidadRegistros();
+
+    int maxIdEmpresa = 0;
+    int maxIdLegajo = 0;
+    for (int i = 0; i < cantidadSueldos; ++i)
+    {
+        Sueldos sueldo = _sueldosArchivo.leer(i);
+
+        if (sueldo.getEstado())
+        {
+
+            if (sueldo.getIdEmpresa() > maxIdEmpresa)
+            {
+                maxIdEmpresa = sueldo.getIdEmpresa();
+            }
+            if (sueldo.getIdLegajo() > maxIdLegajo)
+            {
+                maxIdLegajo = sueldo.getIdLegajo();
+            }
+        }
+    }
+
+    //CREAMOS EL ARRAY
+    float* horasExtrasPorEmpresa = new float[maxIdEmpresa + 1]();
+    float** horasExtrasPorEmpleado = new float*[maxIdEmpresa + 1];
+
+    for (int i = 0; i <= maxIdEmpresa; ++i)
+    {
+        horasExtrasPorEmpleado[i] = new float[maxIdLegajo + 1]();
+    }
+
+    // CARFGO HS EXTRAS
+
+    for (int i = 0; i < cantidadSueldos; ++i)
+    {
+        Sueldos sueldo = _sueldosArchivo.leer(i);
+
+        if (sueldo.getHorasExtras() > 0 && sueldo.getEstado())
+        {
+            int idEmpresa = sueldo.getIdEmpresa();
+            int idLegajo = sueldo.getIdLegajo();
+            horasExtrasPorEmpresa[idEmpresa] += sueldo.getHorasExtras();
+            horasExtrasPorEmpleado[idEmpresa][idLegajo] += sueldo.getHorasExtras();
+        }
+    }
+
+    // RESULTADOS
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    std::cout << "Horas extras por empresa:" << std::endl;
+    rlutil::resetColor();
+    std::cout << "ID Empresa\tTotal Horas Extras" << std::endl;
+
+    for (int idEmpresa = 0; idEmpresa <= maxIdEmpresa; ++idEmpresa)
+    {
+        if (horasExtrasPorEmpresa[idEmpresa] > 0)
+        {
+            std::cout << idEmpresa << "\t" << horasExtrasPorEmpresa[idEmpresa] << std::endl;
+
+            std::cout << "ID Empleado\tHoras Extras" << std::endl;
+
+            for (int idEmpleado = 0; idEmpleado <= maxIdLegajo; ++idEmpleado)
+            {
+                if (horasExtrasPorEmpleado[idEmpresa][idEmpleado] > 0)
+                {
+                    std::cout << idEmpleado << "\t" << horasExtrasPorEmpleado[idEmpresa][idEmpleado] << std::endl;
+                }
+            }
+        }
+    }
+
+    // LIBERO MEMORIA
+    delete[] horasExtrasPorEmpresa;
+
+    for (int i = 0; i <= maxIdEmpresa; ++i)
+    {
+
+        delete[] horasExtrasPorEmpleado[i];
+    }
+    delete[] horasExtrasPorEmpleado;
+
+    system("pause");
+}
+
+/// PERSONAL DADO DE BAJA POR LA EMPRESA (TE HICIERON ACA HERMANO)
+
+
+void SueldosManager::ReportePersonalDadoDeBajaPorEmpresa()
+{
+    rlutil::cls();
+    EmpleadosManager em;
+    int cantidad = _empleadoArchivo.getCantidadRegistros();
+    if(cantidad>0)
+    {
+        ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+        Empleado *empleados;
+        empleados = new Empleado[cantidad];
+
+        if(empleados == nullptr)
+        {
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
+        }
+        _empleadoArchivo.leerTodos(empleados,cantidad);
+
+        em.mostrarEncabezadoBaja();
+        for(int i = 0; i<cantidad; i++)
+        {
+            if(empleados[i].getEstado()== false)
+            {
+
+                em.mostrarEmpleadoBaja(empleados[i]);
+
+            }
+        }
+        cout << endl;
+        delete [] empleados;
+    }
+    else
+    {
+        cout << "No hay registros para listar." << endl;
+    }
+
+
+    /*
+    // BUSCO LOS REGIS
+    int cantidadSueldos = _sueldosArchivo.getCantidadRegistros();
+
+    // BUSCAMOS EL MAXIMO ID DE LA EMPRESA PARA CALCULAR EL TAMAÑO DEL ARRAY
+    int maxIdEmpresa = 0;
+
+    for (int i = 0; i < cantidadSueldos; ++i)
+    {
+        Sueldos sueldo = _sueldosArchivo.leer(i);
+        if (sueldo.getIdEmpresa() > maxIdEmpresa && !sueldo.getEstado())
+        {
+            maxIdEmpresa = sueldo.getIdEmpresa();
+        }
+    }
+
+    ///CREAS ARRAY PARA ALMACENAR
+    int* legajosDadoDeBajaPorEmpresa = new int[maxIdEmpresa + 1]();
+
+    /// LLENAMOS CON EL PERSONAL DADO DE BAJA
+
+    for (int i = 0; i < cantidadSueldos; ++i)
+    {
+        Sueldos sueldo = _sueldosArchivo.leer(i);
+        if (!sueldo.getEstado())
+        {
+            int idEmpresa = sueldo.getIdEmpresa();
+            legajosDadoDeBajaPorEmpresa[idEmpresa] = sueldo.getIdLegajo();
+        }
+    }
+
+    /// MOSTRAMOS LOS POBRES DESEMPLEADOS
+
+    rlutil::setColor(rlutil::LIGHTBLUE);
+    std::cout << "Personal dado de baja por empresa:" << std::endl;
+    rlutil::resetColor();
+    std::cout << "ID Empresa\tID Legajo" << std::endl;
+
+    for (int idEmpresa = 0; idEmpresa <= maxIdEmpresa; ++idEmpresa)
+    {
+        if (legajosDadoDeBajaPorEmpresa[idEmpresa] != 0)
+        {
+            std::cout << idEmpresa << "\t\t" << legajosDadoDeBajaPorEmpresa[idEmpresa] << std::endl;
+        }
+    }
+
+
+    delete[] legajosDadoDeBajaPorEmpresa;
+*/
+    system("pause");
+}

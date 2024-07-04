@@ -52,9 +52,12 @@ void UsuarioManager::menuUsuario()
 
         ap. setColorLineas();
         std::cout << "********************************************************" << std::endl;
-        ap.setColorIngresoTexto();
+        ap.setColorTexto();
         std::cout << "Opcion: ";
 
+
+
+        ap.setColorIngresoTexto();
         cin >> opcion;
 
         switch(opcion)

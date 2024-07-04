@@ -10,15 +10,16 @@ class EmpleadosManager
 public:
     void menuEmpleado();
     void menuModificarEmpleado();
-
-
+void mostrarEmpleadoBaja(Empleado registro);
+void mostrarEncabezadoBaja();
 private:
     void agregarEmpleado();
     void listarEmpleados();
     Empleado crearEmpleado();
-
-    void mostrarEncabezado();
     void mostrarEmpleado(Empleado registro);
+    void mostrarEncabezado();
+
+
 
     void modificarNombre();
     void modificarApellido();

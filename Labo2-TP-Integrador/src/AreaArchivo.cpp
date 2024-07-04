@@ -152,13 +152,17 @@ int AreaArchivo::getCantidadRegistros()
     FILE *pFile;
     int tam;
     pFile = fopen(_nombre.c_str(), "rb");
-
+    if(pFile == nullptr)
+    {
+        return -1;
+    }
     fseek(pFile, 0, SEEK_END);
     tam = ftell(pFile) / sizeof(Area);
 
     fclose(pFile);
 
     return tam;
+
 }
 
 int AreaArchivo::getNuevoID()
