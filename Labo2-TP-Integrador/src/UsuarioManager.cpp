@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <rlutil.h>
 #include "UsuarioManager.h"
 
 using namespace std;
@@ -10,18 +11,48 @@ void UsuarioManager::menuUsuario()
     int opcion;
     do
     {
-        system("cls");
+        rlutil::cls(); // Limpiar la pantalla
 
-        cout << "-----------------------------" << endl;
-        cout << "------- MENU USUARIO --------" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1- AGREGAR USUARIO " << endl;
-        cout << "2- LISTAR TODOS LOS USUARIOS" << endl;
-        cout << "3- MODIFICAR USUARIO" << endl;
-        cout << "4- BAJA USUSARIO" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU USUARIO";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "                     *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. AGREGAR USUARIO" << "              4. BAJA USUSARIO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "     *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "2. LISTAR USUARIOS" << "              5. BACKUP ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "    *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. MODIFICAR USUARIO" << "            6. RESTORE ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "   *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
+
         cin >> opcion;
 
         switch(opcion)
@@ -42,6 +73,14 @@ void UsuarioManager::menuUsuario()
             bajaUsuario();
             system("pause");
             break;
+        case 5:
+            ///backup
+            system("pause");
+            break;
+        case 6:
+            ///restore
+            system("pause");
+            break;
         }
     }
     while(opcion != 0);
@@ -52,17 +91,40 @@ void UsuarioManager::menuModificarUsuario()
     int opcion;
     do
     {
-        system("cls");
+        rlutil::cls(); // Limpiar la pantalla
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU MODIFICAR USUARIO";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "           *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. MODIFICAR USUARIO" << "             2. MODIFICAR CLAVE";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "  *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. MODIFICAR NIVEL DE ACCESO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                         *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
 
-        cout << "-------------------------------------" << endl;
-        cout << "------ MENU MODIFICAR USUARIO -------" << endl;
-        cout << "-------------------------------------" << endl;
-        cout << "1- MODIFICAR NOMBRE" << endl;
-        cout << "2- MODIFICAR CLAVE" << endl;
-        cout << "3- MODIFICAR NIVEL DE ACCESO" << endl;
-        cout << "-------------------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)

@@ -84,5 +84,5 @@ std::string Empresa::getNombreID()
 }
 std::string Empresa::toString()
 {
-   return std::to_string(_idEmpresa) + ", " + std::string(_razonSocial);
+    return std::to_string(_idEmpresa) + ", " + std::string(_razonSocial);
 }

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <rlutil.h>
+
 #include "EmpleadosManager.h"
 #include "Area.h"
 #include "Empresa.h"
@@ -13,21 +15,53 @@ void EmpleadosManager::menuEmpleado()
     int opcion;
     do
     {
-        system("cls");
+        rlutil::cls(); // Limpiar la pantalla
 
-        cout << "-----------------------------" << endl;
-        cout << "------ MENU EMPLEADOS -------- " << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1- AGREGAR EMPLEADO " << endl;
-        cout << "2- LISTAR TODOS LOS EMPLEADOS" << endl;
-        cout << "3- MODIFICAR EMPLEADO" << endl;
-        cout << "4- ELIMINAR EMPLEADO" << endl;
-        cout << "5- CONSULTAR EMPLEADO" << endl;
-        cout << "6- BACKUP ARCHIVO AREAS" << endl;
-        cout << "7- RESTORE ARCHIVO AREAS" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU EMPLEADOS";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "                   *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. AGREGAR EMPLEADO" << "           5. CONSULTAR EMPLEADO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "  *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "2. LISTAR EMPLEADOS" << "           6. BACKUP ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "      *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. MODIFICAR EMPLEADO" << "         7. RESTORE ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "     *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "4. ELIMINAR EMPLEADO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                 *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -72,6 +106,16 @@ void EmpleadosManager::menuEmpleado()
 
 void EmpleadosManager::menuModificarEmpleado()
 {
+    /*
+        int _idLegajo;
+        int _idEmpresa;
+        int _idArea;
+        //float _horasTrabajadas;
+        //float _sueldo;
+        Fecha _fechaContratacion;
+        Fecha _fechaBaja;
+        bool _estado;
+    */
 
 }
 
@@ -125,14 +169,13 @@ Empleado EmpleadosManager::crearEmpleado()
     int idLegajo;
     int idEmpresa;
     int idArea;
-    float horasTrabajadas;
-    float sueldo;
+
     Fecha fechaBaja;
     bool estado=true;
 
     idLegajo = _empleadoArchivo.getNuevoID();
     cin.ignore();
-    ///TODO: completar la carga de un empleado
+
     cout << "Ingrese ID de legajo: " << idLegajo << endl;
     cout << "Ingrese nombre: ";
     getline(cin, nombre);
@@ -202,7 +245,7 @@ void EmpleadosManager::bajaEmpleado()
         cout << "-------------------------" << endl;
         cout << "Desea dar de baja el empleado seleccionado? (1-Si/0-No): ";
         cin >> estado;
-        registro.setEstado(estado);
+        registro.setEstado(!estado);
         _empleadoArchivo.guardar(posicion,registro);
         cout << "El empleado " << registro.getApellido() <<", " << registro.getNombre() << " se ha dado de baja." << endl;
     }
@@ -210,7 +253,6 @@ void EmpleadosManager::bajaEmpleado()
     {
         cout << "No existe un empleado con legajo " << idLegajo << endl;
     }
-
 }
 
 

@@ -44,7 +44,7 @@ void Area::setNombre(std::string nombre)
 }
 bool Area::getEstado()
 {
-   return _estado;
+    return _estado;
 }
 
 void Area::setEstado(bool estado)
@@ -58,5 +58,5 @@ std::string Area::getNombreID()
 }
 std::string Area::toString()
 {
-   return std::to_string(_idArea) + ", " + std::string(_nombre);
+    return std::to_string(_idArea) + ", " + std::string(_nombre);
 }

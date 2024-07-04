@@ -7,10 +7,10 @@
 #include "EmpresaManager.h"
 #include "EmpleadosManager.h"
 #include "AreasManager.h"
-
+#include "SueldosManager.h"
 void AppManager::menuPrincipal()
 {
-    int option;
+    int opcion;
     do
     {
         ////RLUTIL PRUEBA
@@ -33,15 +33,15 @@ void AppManager::menuPrincipal()
 
         std::cout << "* ";
         rlutil::setColor(rlutil::LIGHTGREEN);
-        std::cout << "2. EMPLEADOS" << "             5. USUARIOS";
+        std::cout << "2. EMPLEADOS" << "             5. SUELDOS";
         rlutil::setColor(rlutil::WHITE);
-        std::cout << "                 *" << std::endl;
+        std::cout << "                  *" << std::endl;
 
         std::cout << "* ";
         rlutil::setColor(rlutil::LIGHTGREEN);
-        std::cout << "3. AREAS";
+        std::cout << "3. AREAS"<< "                 6. USUARIOS";
         rlutil::setColor(rlutil::WHITE);
-        std::cout << "                                             *" << std::endl;
+        std::cout << "                 *" << std::endl;
 
         rlutil::setColor(rlutil::YELLOW);
         std::cout << "********************************************************" << std::endl;
@@ -60,9 +60,9 @@ void AppManager::menuPrincipal()
         //// RLUTIL FIN PRUEBA
 
 
-        cin >> option;
+        cin >> opcion;
 
-        switch(option)
+        switch(opcion)
         {
         case 1:
             ///MENU EMPRESA
@@ -83,8 +83,12 @@ void AppManager::menuPrincipal()
             ///MENU REPORTES
             system("pause");
             break;
-
         case 5:
+            /// MENU SUELDOS
+            _sm.menuSueldos();
+            system("pause");
+            break;
+        case 6:
             /// MENU USUARIOS
             _um.menuUsuario();
             system("pause");
@@ -92,6 +96,6 @@ void AppManager::menuPrincipal()
         }
 
     }
-    while(option != 0);
+    while(opcion != 0);
 
 }

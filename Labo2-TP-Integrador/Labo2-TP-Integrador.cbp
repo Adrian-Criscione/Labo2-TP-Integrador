@@ -47,6 +47,8 @@
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Persona.h" />
 		<Unit filename="include/Sueldos.h" />
+		<Unit filename="include/SueldosArchivo.h" />
+		<Unit filename="include/SueldosManager.h" />
 		<Unit filename="include/Usuario.h" />
 		<Unit filename="include/UsuarioArchivo.h" />
 		<Unit filename="include/UsuarioManager.h" />
@@ -65,6 +67,8 @@
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/Persona.cpp" />
 		<Unit filename="src/Sueldos.cpp" />
+		<Unit filename="src/SueldosArchivo.cpp" />
+		<Unit filename="src/SueldosManager.cpp" />
 		<Unit filename="src/Usuario.cpp" />
 		<Unit filename="src/UsuarioArchivo.cpp" />
 		<Unit filename="src/UsuarioManager.cpp" />

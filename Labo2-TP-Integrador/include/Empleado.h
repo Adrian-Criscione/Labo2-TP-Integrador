@@ -31,14 +31,14 @@ class Empleado : public Persona
     protected:
 
     private:
-        int _idLegajo;
-        int _idEmpresa;
-        int _idArea;
-        //float _horasTrabajadas;
-        //float _sueldo;
-        Fecha _fechaContratacion;
-        Fecha _fechaBaja;
-        bool _estado;
+    int _idLegajo;
+    int _idEmpresa;
+    int _idArea;
+    //float _horasTrabajadas;
+    //float _sueldo;
+    Fecha _fechaContratacion;
+    Fecha _fechaBaja;
+    bool _estado;
 
 };
 

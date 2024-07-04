@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <rlutil.h>
 #include "AreasManager.h"
 
 using namespace std;
@@ -13,18 +14,43 @@ void AreasManager::menuArea()
     {
         system("cls");
 
-        cout << "-----------------------------" << endl;
-        cout << "------ MENU AREA -------- " << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1- AGREGAR AREA " << endl;
-        cout << "2- LISTAR TODAS LAS AREAS" << endl;
-        cout << "3- MODIFICAR AREA" << endl;
-        cout << "4- ELIMINAR AREA" << endl;
-        cout << "5- BACKUP ARCHIVO AREAS" << endl;
-        cout << "6- RESTORE ARCHIVO AREAS" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opción: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU AREA";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "                        *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. AGREGAR AREA" << "              4. ELIMINAR AREA";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "        *" << std::endl;
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "2. LISTAR AREAS" << "              5. BACKUP ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "       *" << std::endl;
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. MODIFICAR AREA"<< "            6. RESTORE ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "      *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -65,13 +91,33 @@ void AreasManager::menuModificarArea()
     {
         system("cls");
 
-        cout << "--------------------------------------" << endl;
-        cout << "------ MENU MODIFICAR AREA -------- " << endl;
-        cout << "--------------------------------------" << endl;
-        cout << "1- MODIFICAR NOMBRE" << endl;
-        cout << "--------------------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: "<< endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU MODIFICAR AREA";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "              *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. MODIFICAR NOMBRE";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                  *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -131,30 +177,37 @@ void AreasManager::listarAreas()
     system("cls");
     int cantidad = _areaArchivo.getCantidadRegistros();
 
-    ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
-    Area *areas;
-    areas = new Area[cantidad];
-
-    if(areas == nullptr)
+    if(cantidad >0)
     {
-        cout << "No se pudo obtener la memoria solicitada." << endl;
+        ///UTILIZACION DE MEMORIA DINAMICA PARA LISTAR LAS EMPRESAS
+        Area *areas;
+        areas = new Area[cantidad];
+
+        if(areas == nullptr)
+        {
+            cout << "No se pudo obtener la memoria solicitada." << endl;
+            return;
+        }
+        _areaArchivo.leerTodos(areas,cantidad);
+
+        mostrarEncabezado();
+
+        for(int i = 0; i<cantidad; i++)
+        {
+            if(areas[i].getEstado())
+            {
+
+                mostrarArea(areas[i]);
+            }
+        }
+        cout << endl;
+        delete [] areas;
+    }
+    else
+    {
+        cout << "No hay usuarios para listar." << endl;
         return;
     }
-    _areaArchivo.leerTodos(areas,cantidad);
-
-    mostrarEncabezado();
-
-
-    for(int i = 0; i<cantidad; i++)
-    {
-        if(areas[i].getEstado())
-        {
-
-            mostrarArea(areas[i]);
-        }
-    }
-    cout << endl;
-    delete [] areas;
 
 }
 

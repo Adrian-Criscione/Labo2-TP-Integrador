@@ -2,84 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="src\Fecha.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Empresa.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="254" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\EmpleadoArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="126" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="src\EmpleadoArchivo.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2134" topLine="133" />
-		</Cursor>
-	</File>
-	<File name="include\AppManager.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="329" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Empleado.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1322" topLine="61" />
-		</Cursor>
-	</File>
-	<File name="include\UsuarioArchivo.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="178" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Persona.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="609" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="src\AppManager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1201" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="107" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Usuario.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="164" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Fecha.h" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="59" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\Sueldos.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="386" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\EmpresaArchivo.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="421" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\EmpresaManager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4957" topLine="286" />
-		</Cursor>
-	</File>
-	<File name="src\EmpleadosManager.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5578" topLine="154" />
-		</Cursor>
-	</File>
-	<File name="include\Area.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="219" topLine="0" />
+			<Cursor1 position="406" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="include\EmpleadosManager.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -87,74 +12,29 @@
 			<Cursor1 position="882" topLine="2" />
 		</Cursor>
 	</File>
-	<File name="src\Sueldos.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Usuario.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="544" topLine="0" />
+			<Cursor1 position="164" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\UsuarioArchivo.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Persona.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="450" topLine="0" />
+			<Cursor1 position="609" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="src\Persona.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\EmpleadoArchivo.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="160" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\AreaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="156" topLine="0" />
+			<Cursor1 position="2134" topLine="133" />
 		</Cursor>
 	</File>
 	<File name="include\Empleado.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="5" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="479" topLine="15" />
+			<Cursor1 position="479" topLine="12" />
 		</Cursor>
 	</File>
-	<File name="include\UsuarioManager.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\AreaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="473" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\AreasManager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4254" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="include\Usuario.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="710" topLine="8" />
-		</Cursor>
-	</File>
-	<File name="src\Area.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="843" topLine="29" />
-		</Cursor>
-	</File>
-	<File name="include\EmpresaManager.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="105" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="include\AreasManager.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="485" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\UsuarioManager.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8342" topLine="294" />
-		</Cursor>
-	</File>
-	<File name="src\EmpresaArchivo.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2115" topLine="114" />
-		</Cursor>
-	</File>
-	<File name="include\Empresa.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="406" topLine="3" />
+			<Cursor1 position="150" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="src\Empresa.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -162,9 +42,129 @@
 			<Cursor1 position="1480" topLine="55" />
 		</Cursor>
 	</File>
-	<File name="include\AreaArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Empleado.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="150" topLine="3" />
+			<Cursor1 position="1322" topLine="61" />
+		</Cursor>
+	</File>
+	<File name="src\UsuarioManager.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8342" topLine="294" />
+		</Cursor>
+	</File>
+	<File name="src\AppManager.cpp" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="221" topLine="4" />
+		</Cursor>
+	</File>
+	<File name="src\AreaArchivo.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="156" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="222" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\EmpresaManager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4957" topLine="286" />
+		</Cursor>
+	</File>
+	<File name="include\Sueldos.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="386" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\UsuarioArchivo.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="450" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\UsuarioManager.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="473" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\EmpleadoArchivo.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="126" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="src\Sueldos.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="544" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\UsuarioArchivo.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="178" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Fecha.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="328" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Fecha.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="254" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Area.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="219" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\EmpleadosManager.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5578" topLine="154" />
+		</Cursor>
+	</File>
+	<File name="include\AreasManager.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="485" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\EmpresaArchivo.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="421" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\EmpresaArchivo.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2115" topLine="114" />
+		</Cursor>
+	</File>
+	<File name="include\AppManager.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="212" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\EmpresaManager.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="105" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="src\AreasManager.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4224" topLine="156" />
+		</Cursor>
+	</File>
+	<File name="src\Area.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="843" topLine="29" />
+		</Cursor>
+	</File>
+	<File name="include\Usuario.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="710" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="src\Persona.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="160" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

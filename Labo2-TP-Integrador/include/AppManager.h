@@ -4,6 +4,7 @@
 #include "EmpleadosManager.h"
 #include "UsuarioManager.h"
 #include "AreasManager.h"
+#include "SueldosManager.h"
 class AppManager
 {
 public:
@@ -13,6 +14,7 @@ private:
     EmpleadosManager _empManager;
     UsuarioManager _um;
     AreasManager _am;
+    SueldosManager _sm;
 };
 
 #endif // APPMANAGER_H

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <rlutil.h>
 #include "EmpresaManager.h"
 
 using namespace std;
@@ -10,20 +11,47 @@ void EmpresaManager::menuEmpresa()
     int opcion;
     do
     {
-        system("cls");
+        rlutil::cls(); // Limpiar la pantalla
 
-        cout << "-----------------------------" << endl;
-        cout << "------ MENU EMPRESA -------- " << endl;
-        cout << "-----------------------------" << endl;
-        cout << "1- AGREGAR EMPRESA " << endl;
-        cout << "2- LISTAR TODAS LAS EMPRESAS" << endl;
-        cout << "3- MODIFICAR EMPRESA" << endl;
-        cout << "4- ELIMINAR EMPRESA" << endl;
-        cout << "5- BACKUP ARCHIVO EMPRESAS" << endl;
-        cout << "6- RESTAURAR ARCHIVO EMPRESAS" << endl;
-        cout << "-----------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU EMPRESAS";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "                    *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. AGREGAR EMPRESA" << "              4. ELIMINAR EMPRESA";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "  *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "2. LISTAR EMPRESAS" << "              5. BACKUP ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "    *" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "3. MODIFICAR EMPRESAS" << "           6. RESTORE ARCHIVO";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "   *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
         cin >> opcion;
 
         switch(opcion)
@@ -64,16 +92,41 @@ void EmpresaManager::menuModificarEmpresa()
     int opcion;
     do
     {
-        system("cls");
+        rlutil::cls(); // Limpiar la pantalla
 
-        cout << "--------------------------------------" << endl;
-        cout << "------ MENU MODIFICAR EMPRESA -------- " << endl;
-        cout << "--------------------------------------" << endl;
-        cout << "1- MODIFICAR NOMBRE" << endl;
-        cout << "2- MODIFICAR CUIT" << endl;
-        cout << "--------------------------------------" << endl;
-        cout << "0- SALIR" << endl;
-        cout << "Opcion: ";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        std::cout << "*      ";
+        rlutil::setColor(rlutil::LIGHTRED);
+        std::cout << "               MENU MODIFICAR EMPRESA";
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "           *" << std::endl;
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "1. MODIFICAR RAZON SOCIAL" << "        2. MODIFICAR CUIT";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "   *" << std::endl;
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+
+        std::cout << "* ";
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        std::cout << "0. SALIR";
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "                                             *" << std::endl;
+
+        rlutil::setColor(rlutil::YELLOW);
+        std::cout << "********************************************************" << std::endl;
+        rlutil::setColor(rlutil::WHITE);
+        std::cout << "Opcion: ";
+
+
+
+
+
+
         cin >> opcion;
 
         switch(opcion)
