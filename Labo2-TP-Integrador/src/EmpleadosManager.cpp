@@ -246,6 +246,7 @@ void EmpleadosManager::listarEmpleados()
 Empleado EmpleadosManager::crearEmpleado()
 {
     AppManager ap;
+    Empresa registro;
     string nombre;
     string apellido;
     string dni;
@@ -298,22 +299,22 @@ Empleado EmpleadosManager::crearEmpleado()
     }
     while(!ap.esStringValido(apellido,true,false,false));
 
-    ///CARGA DNI
+///CARGA DEL DNI
     do
     {
         ap.setColorTexto();
         cout << "Ingrese DNI: ";
         ap.setColorIngresoTexto();
         getline(cin,dni);
-
-        if(!ap.esStringValido(dni,false,true,false)) ///false = no permitir espacios / true = permitir numeros / false = no permitir caracteres especiales
+        if(!esDNIValido(dni))
         {
             ap.setColorError();
-            cout << "El DNI ingresado es incorrecto." << endl;
+            cout << "DNI incorrecto." << endl;
             ap.setColorIngresoTexto();
+
         }
     }
-    while(!ap.esStringValido(dni,false,true,false));
+    while(!esDNIValido(dni));
 
     ap.setColorTexto();
     cout << "Ingrese fecha de nacimiento (dd mm aaaa): ";
@@ -325,9 +326,11 @@ Empleado EmpleadosManager::crearEmpleado()
     cout << "Ingrese ID de empresa: ";
     ap.setColorIngresoTexto();
     cin >> idEmpresa;
-
+    int posicion;
+    posicion = _empresaArchivo.buscarID(idEmpresa);
+    registro = _empresaArchivo.leer(posicion);
     ///VALIDACION: existe el idEmresa cargado en el paso anterior.
-    while(_empresaArchivo.buscarID(idEmpresa) == -1)
+    while(posicion == -1 || registro.getEstado()==true)
     {
         ap.setColorError();
         cout << "ID de empresa Incorrecto." << endl;
@@ -337,7 +340,7 @@ Empleado EmpleadosManager::crearEmpleado()
         cin >> idEmpresa;
     }
     ap.setColorTexto();
-    cout << "Ingrese ID de área: ";
+    cout << "Ingrese ID de area: ";
     ap.setColorIngresoTexto();
     cin >> idArea;
 
@@ -584,22 +587,23 @@ void EmpleadosManager::modificarDNI()
         mostrarEncabezado();
         mostrarEmpleado(registro);
 
-        ///CARGA DNI
-        do
+        ///CARGA DEL DNI
+    do
+    {
+        ap.setColorTexto();
+        cout << "Ingrese DNI: ";
+        ap.setColorIngresoTexto();
+        getline(cin,dniNuevo);
+        if(!esDNIValido(dniNuevo))
         {
-            ap.setColorTexto();
-            cout << "Ingrese DNI: ";
+            ap.setColorError();
+            cout << "DNI incorrecto." << endl;
             ap.setColorIngresoTexto();
-            getline(cin,dniNuevo);
 
-            if(!ap.esStringValido(dniNuevo,false,true,false)) ///false = no permitir espacios / true = permitir numeros / false = no permitir caracteres especiales
-            {
-                ap.setColorError();
-                cout << "El DNI ingresado es incorrecto." << endl;
-                ap.setColorIngresoTexto();
-            }
         }
-        while(!ap.esStringValido(dniNuevo,false,true,false));
+    }
+    while(!esDNIValido(dniNuevo));
+
 
 
         registro.setDNI(dniNuevo);
@@ -807,4 +811,24 @@ void EmpleadosManager::RestaurarCopiaSeguridad()
         cout << "FALLO LA RESTAURACION." << endl;
     }
     delete [] empleados;
+}
+
+bool EmpleadosManager::esDNIValido(std::string dni)
+{
+    int i;
+    int cantidad = dni.length();
+    if (cantidad != 8)
+    {
+        return false; // El CUIT debe tener 11 dígitos
+    }
+
+    for (i = 0; i < cantidad; ++i)
+    {
+        if (!isdigit(dni[i]))
+        {
+            return false; // Si algún carácter no es un dígito, el CUIT no es válido
+        }
+    }
+
+    return true; // Todos los caracteres son dígitos y la longitud es correcta
 }

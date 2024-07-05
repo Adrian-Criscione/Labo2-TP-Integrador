@@ -10,8 +10,8 @@ class EmpleadosManager
 public:
     void menuEmpleado();
     void menuModificarEmpleado();
-void mostrarEmpleadoBaja(Empleado registro);
-void mostrarEncabezadoBaja();
+    void mostrarEmpleadoBaja(Empleado registro);
+    void mostrarEncabezadoBaja();
 private:
     void agregarEmpleado();
     void listarEmpleados();
@@ -27,7 +27,7 @@ private:
     void modificarFechaNac();
     void modificarArea();
     void modificarFechaContratacion();
-
+    bool esDNIValido(std::string dni);
     void HacerCopiaSeguridad();
     void RestaurarCopiaSeguridad();
 

@@ -8,7 +8,7 @@
 #include "EmpresaArchivo.h"
 #include "EmpleadoArchivo.h"
 #include "EmpleadosManager.h"
-using namespace std;
+//using namespace std;
 
 
 
@@ -532,12 +532,17 @@ void SueldosManager::RestaurarCopiaSeguridad()
 
 void SueldosManager::ReporteTotalSueldosPorEmpresa()
 {
+    AppManager ap;
+    Sueldos sueldo;
     int idEmpresa;
     int anio;
-
+    ap.setColorTexto();
     cout << "Ingrese el id de la empresa: ";
+    ap.setColorIngresoTexto();
     cin >> idEmpresa;
+    ap.setColorTexto();
     cout << "Ingrese el año: ";
+    ap.setColorIngresoTexto();
     cin >> anio;
 
     float totalSueldosPorMes[12] = {0.0f};
@@ -546,7 +551,7 @@ void SueldosManager::ReporteTotalSueldosPorEmpresa()
 
     for (int i = 0; i < cantidad; ++i)
     {
-        Sueldos sueldo = _sueldosArchivo.leer(i);
+        sueldo = _sueldosArchivo.leer(i);
 
 
         if (sueldo.getIdEmpresa() == idEmpresa && sueldo.getFechaLiquidacion().getAnio() == anio && sueldo.getEstado())
@@ -556,14 +561,33 @@ void SueldosManager::ReporteTotalSueldosPorEmpresa()
         }
     }
 
+    /// para mostrar el nombre de la empresa
+    int posNombreEmpresa = _empresaArchivo.buscarID(sueldo.getIdEmpresa());
+    Empresa nombreEmpresa = _empresaArchivo.leer(posNombreEmpresa);
+
+
     rlutil::cls();
-    std::cout << "Total de sueldos pagados por la empresa con ID " << idEmpresa << " en el año " << anio << " por mes:" << std::endl;
+    ap.setColorTexto();
+    std::cout << "Total de sueldos pagados por la empresa con ID ";
+    ap.setColorIngresoTexto();
+    std::cout << nombreEmpresa.getNombreID();
+    ap.setColorTexto();
+    std::cout  << " en el año ";
+    ap.setColorIngresoTexto();
+    cout << anio;
+    ap.setColorTexto();
+    cout << " por mes:" << std::endl;
+    ap.setColorTexto();
     std::cout << "Mes\tTotal Sueldos" << std::endl;
 
 
     for (int mes = 0; mes < 12; ++mes)
     {
-        std::cout << (mes + 1) << "\t$" << totalSueldosPorMes[mes] << std::endl;
+        ap.setColorTexto();
+        std::cout << (mes + 1);
+         ap.setColorIngresoTexto();
+        std::cout << "\t$" << totalSueldosPorMes[mes] << std::endl;
+        cout << endl;
     }
 
     system("pause");

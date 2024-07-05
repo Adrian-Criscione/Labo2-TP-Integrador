@@ -99,13 +99,13 @@
 1719895637 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadoarchivo.h
 	"Empleado.h"
 
-1720135970 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
+1720137498 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\empleadosmanager.h
 	"Empleado.h"
 	"EmpleadoArchivo.h"
 	"AreaArchivo.h"
 	"EmpresaArchivo.h"
 
-1720135970 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
+1720138596 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\empleadosmanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
@@ -205,7 +205,7 @@
 1720053785 c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\include\sueldosarchivo.h
 	"Sueldos.h"
 
-1720135984 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\sueldosmanager.cpp
+1720137013 source:c:\users\adrian\documents\github\labo2-tp-integrador\labo2-tp-integrador\src\sueldosmanager.cpp
 	<iostream>
 	<cstdlib>
 	<iomanip>
